@@ -120,9 +120,11 @@ less than one
 # Cache memory
 
 <div class=column>
-- In order to alleviate the memory bandwidth bottleneck, modern CPUs have multiple levels of cache memory
-- L1 cache is closest to the CPU core and has highest bandwidth / smallest latency, but smallest capacity
-- Each successive level has higher capacity but lower bandwidth / higher latency
+- In order to alleviate the memory bandwidth bottleneck, CPUs have multiple levels of cache memory
+    - when data is accessed, it will be first fetched into cache
+	- with reuse subsequent access is much faster
+- L1 cache is closest to the CPU core and is fastest but has smallest capacity
+- Each successive level has higher capacity but slower access
 </div>
   
 <div class=column>
@@ -139,7 +141,7 @@ less than one
 </div>
   
 <div class=column>
-![](img/smt.png){.center width=90%}
+![](img/smt.png){.center width=70%}
 </div>
 
 
@@ -147,16 +149,54 @@ less than one
 
 # Multicore CPU schematic
 
+<div class=column>
 - The multicore CPUs are packeted in sockets
 - Modern multicore CPUs have typically private L1 and L2 caches per core, and L3 cache that is shared between a set of cores. 
 - All cores have shared access to the main memory
+</div>
+
+<div class=column>
+![](img/multicore-schematic.png){.center width=60%}
+</div>
 
 
+# Cache coherency
+
+<div class=column>
+- With private caches per core, hardware needs to ensure that the data is consistent between the cores
+- When a core writes to a cache, CPU may need to update the caches of other cores
+    - Possibly expensive operation
+</div>
+
+<div class=column>
+![](img/cache-coherency.png){.center width=60%}
+</div>
+   
+# NUMA architectures
+
+<div class=column>
+- Many current supercomputer nodes have two sockets with main memory attached to the sockets
+- System has Non Uniform Memory Access (NUMA)
+    - All memory within a node is accessible, but latencies and bandwidths vary
+- Hardware needs to maintain cahce coherency also between different NUMA nodes (ccNUMA)
+</div>
+
+<div class=column>
+![](img/numa.png){.center width=60%}
+</div>
 
 # Summary
 
+- Modern multicore CPUs are complex beasts
+- In order to maximally utilize the CPU, application needs to:
+    - use multiple threads (or processes)
+	- utilize caches for feeding data to CPU at fastest possible pace
+	- keep the pipeline full and utilize instruction level parallelism
+	- use vector instructions for maximizing FLOPS per instruction
+
 # Web resources
 
-- 
+- Agner's optimization resources
+    - <https://www.agner.org/optimize/>
 	
 	
