@@ -19,9 +19,8 @@ lang:   en
 </div>
 <div class=column>
 
-<!--By Kapooht - Own work, CC BY-SA 3.0, -->
-<!--https://commons.wikimedia.org/w/index.php?curid=25789639 -->
-![](img/Von_Neumann_Architecture.svg){.center width=80%}
+<!--Image copyright By Kapooht - Own work, CC BY-SA 3.0, -->
+![](https://upload.wikimedia.org/wikipedia/commons/e/e5/Von_Neumann_Architecture.svg){.center width=70%}
 
 </div>
 
@@ -29,61 +28,71 @@ lang:   en
 # Modern CPU core
 
 <div class=column>
-- Internally, each core is highly complex:
-    - **Superscalar out-of-order** instruction execution capabilities
-	- **SIMD** instructions
-	- Multiple levels of hierarchical **cache memory**
+- Internally, each core is highly complex
+- **Superscalar out-of-order** instruction execution
+- **SIMD** instructions
+- Multiple levels of hierarchical **cache memory**
 </div>
 <div class=column>
 
-![](img/zen_2_core_diagram.svg){.center width=50%}
+<!-- Image copyright Public Domain -->
+![](https://en.wikichip.org/w/images/f/f2/zen_2_core_diagram.svg){.center width=50%}
 
 </div>
 
 # How CPU core operates?
 
 - Clock frequency determines the pace at which CPU works
-- Instructions are started at each clock cycle
+- Zero to **N** instructions start at each clock cycle
 - Instruction latency = number of clock cycles that are required for
   completing the execution
 - Instruction throughput = number of clock cycles to wait before
-  starting instruction again
+  starting same kind of instruction again
     - Throughput can be much smaller than the latency
+    - Sometimes given as cycles per instruction (CPI) or its inverse, instructions per cycle (IPC)
 
 # Fetch-decode-execute cycle
 
 <div class=column>
-- Instructions are executed in successive steps
-    - Fetch (F): control unit fetches instruction from memory
-	- Decode (D): decode the instruction and determine operands
-	- Execute (E): perform the instruction. If instruction involves
-      arithmetic or logic ALU is utilized
-- Benefit: simpler operands allow for simpler logic and allow
-  **pipelining** the operations
+- Instructions are executed in stages
+- Fetch (F): control unit fetches instruction from memory
+- Decode (D): decode the instruction and determine operands
+    - Instructions are broken into uops
+- Execute (E): perform the instruction 
+    - Utilize ALU or access memory
+- Enables simpler logic and **pipelining** the operations
 </div>
 <div class=column>
+
 ![](img/front-vs-backend.png){.center width=50%}
 </div>
   
 # Pipelining
 
-- Both instruction execution and arithmetic units can be *pipelined*
+- Instruction execution and arithmetic units can be *pipelined*
     - Instruction execution: work on multiple instructions
       simultaneously
 	- Arithmetic units: execute different stages of a an instruction
       at the same time in an assembly line fashion
-	- Both: one result per cycle after the pipeline is full
+	- Together: one result per cycle after the pipeline is full
+- Within the pipeline, hardware can execute instructions in different 
+ order than they were issued (**out-of-order** scheduling)
 - Requires complicated software (compiler) and hardware
-  (**out-of-order** scheduling) to keep the pipeline full
-    - Conditional branches can cause the pipeline to stall
+   to keep the pipeline full
+- Conditional branches can cause the pipeline to stall
 		
 # Pipelining: example
 
-- Wind-up and wind-down phases: no instructions executed
-- First result available after 4 cycles, total time 8 cycles compared
-  to 16 cycles without a pipeline
-  
-![](img/pipeline.png){.center width=70%}
+<div class=column>
+- Wind-up and wind-down phases: no instructions retired
+- First result available after 5 cycles, total time 7 cycles compared
+  to 15 cycles without a pipeline
+- Real pipeline in modern CPU cores can be much more complex
+</div>
+
+<div class=column>
+![](https://simplecore-ger.intel.com/techdecoded/wp-content/uploads/sites/11/figure-2-3.png){.center width=70%}
+</div>
 
 # Superscalar execution
 
@@ -96,13 +105,16 @@ lang:   en
     - Actual execution may be out-of-order
 - Pipelining and superscalar execution allow instruction throughputs
 less than one
+
 </div>
 
 <div class=column>
 
-![](img/ilp.svg){.center width=70%}
+<!-- Image copyright CSC, see LICENSE -->
+![](img/ilp.svg){.center width=60%}
 
 </div>
+
 
 # Vectorization
 
@@ -112,9 +124,8 @@ less than one
 - AVX512 512 bits = 8 double precision numbers
     - single AVX512 fused multiply add instruction can perform 16 FLOPS
 
-<!--![](img/vector-add.png){.center width=70%} -->
-
 <br>
+<!-- Image copyright CSC, see LICENSE -->
 ![](img/simd.svg){.center width=70%}
   
 # Cache memory
@@ -122,26 +133,30 @@ less than one
 <div class=column>
 - In order to alleviate the memory bandwidth bottleneck, CPUs have multiple levels of cache memory
     - when data is accessed, it will be first fetched into cache
-	- with reuse subsequent access is much faster
+	- when data is reused, subsequent access is much faster
 - L1 cache is closest to the CPU core and is fastest but has smallest capacity
 - Each successive level has higher capacity but slower access
 </div>
   
 <div class=column>
+<!-- Image copyright CSC, see LICENSE -->
 ![](img/memory_hierarchy.svg){.center width=90%}
 </div>
 
 # Symmetric Multithreading (SMT)
 
 <div class=column>
-- It is difficult to fill-in all the available hardware resources in a CPU core continously
+- It is difficult to fill-in all the available hardware resources in a 
+  CPU core
     - Pipeline stalls due to main memory latency, I/O, etc.
-- To maximize the use of available hardware resources, several hardware threads can be executed on a single core
+- To maximize hardware utilization, several hardware threads can be executed on a single core
+    - Seen as logical cores by OS
 - Benefits depend on the application, and SMT can also worsen the performance
 </div>
   
 <div class=column>
-![](img/smt.png){.center width=70%}
+<!-- Image copyright CSC, see LICENSE -->
+![](img/smt.svg){.center width=70%}
 </div>
 
 
@@ -150,13 +165,15 @@ less than one
 # Multicore CPU schematic
 
 <div class=column>
-- The multicore CPUs are packeted in sockets
-- Modern multicore CPUs have typically private L1 and L2 caches per core, and L3 cache that is shared between a set of cores. 
+- The multicore CPU is packeted in a socket
+- Typically, L1 and L2 caches are private per core, and L3 cache is shared 
+  between set of cores
 - All cores have shared access to the main memory
 </div>
 
 <div class=column>
-![](img/multicore-schematic.png){.center width=60%}
+<!-- Image copyright CSC, see LICENSE -->
+![](img/multicore-schematic.svg){.center width=60%}
 </div>
 
 
@@ -169,20 +186,22 @@ less than one
 </div>
 
 <div class=column>
-![](img/cache-coherency.png){.center width=60%}
+<!-- Image copyright CSC, see LICENSE -->
+![](img/cache-coherency.png){.center width=50%}
 </div>
    
 # NUMA architectures
 
 <div class=column>
-- Many current supercomputer nodes have two sockets with main memory attached to the sockets
-- System has Non Uniform Memory Access (NUMA)
+- A node can have multiple sockets with memory attached to each socket
+- Non Uniform Memory Access (NUMA)
     - All memory within a node is accessible, but latencies and bandwidths vary
 - Hardware needs to maintain cahce coherency also between different NUMA nodes (ccNUMA)
 </div>
 
 <div class=column>
-![](img/numa.png){.center width=60%}
+<!-- Image copyright CSC, see LICENSE -->
+![](img/numa.png){.center width=70%}
 </div>
 
 # Summary
@@ -196,7 +215,9 @@ less than one
 
 # Web resources
 
-- Agner's optimization resources
-    - <https://www.agner.org/optimize/>
+- Detailed information about processor microarchitectures: 
+    - <https://en.wikichip.org/wiki/WikiChip>
+	- <https://uops.info/>
+- Agner's optimization resources <https://www.agner.org/optimize/>
 	
 	
