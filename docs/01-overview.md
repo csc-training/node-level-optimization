@@ -9,6 +9,7 @@ lang:   en
 # Course outline
 
 - Analyzing and understanding performance issues
+    - Awareness of modern CPUs
 - Improving performance through vectorization
 - Improving performance through memory optimization
 - Improving performance though advanced threading techniques
@@ -65,7 +66,8 @@ Time elapsed 343773 ums
 - You can make a big difference to code performance with how you
   express things
     - Helping the compiler spot optimisation opportunities
-    - Using the insight of your application
+    - Using the insight of your application - language semantics might
+      limit compiler
     - Removing obscure (and obsolescent) “optimizations” in older code
         - Simple code is the best, until otherwise proven
 - This is a dark art, mostly: optimize on case-by-case basis
@@ -218,14 +220,24 @@ end do
 # How to assess application's performance?
 
 - Example: maximum performance of **axpy** `x[i] = a x[i] + y[j]`
-    - Two FLOPS (multiply and add)
-	- Three memory references
-	- With double precision numbers arithmetic intensity
+    - Two FLOPS (multiply and add) per `i`
+	- Three memory references per `i`
+	- With double precision numbers arithmetic intensity <br>
       $I=\frac{\mathrm{FLOPS}}{\mathrm{memory traffic}} =
       \frac{2}{3*8}=0.08$ FLOPS/byte
 	- In Puhti, memory bandwidth is \~200 GB/s, so maximum performance
       is \~16 GFLOPS/s
 	- Theoretical peak performance of Puhti node is \~2600 GFLOPS/s
+
+# How to assess application's performance?
+
+- Example: matrix-matrix multiplication `C[i,j] = A[i,k] * B[k,j]`
+    - $N^3$ FLOPS
+	- $3 N^2$ memory references
+	- With double precision numbers arithmetic intensity
+      $I=\frac{N}{3}$ FLOPS/byte
+	- With large enough $N$ limited by peak performance
+
 
 # Roofline model
 
@@ -241,7 +253,7 @@ P = min \begin{cases}
 $$
 
 - Machine balance = arithmetic intensity needed for peak performance
-    - Typical values 5-10 FLOPS/byte
+    - Typical values 5-15 FLOPS/byte
 - Additional ceilings can be included (caches, vectorization,
   threading)
 
@@ -259,14 +271,14 @@ $$
 
 <div class=column>
 - Model does not tell if code can be optimized or not
-    - App 1 may not be *fundamentally* memory bound, but only
+    - Application 1 may not be *fundamentally* memory bound, but only
 	implemented badly (not using caches efficiently)
-	- App 2 may not have *fundamentally* prospects for higher
+	- Application 2 may not have *fundamentally* prospects for higher
 	performance (performs only additions and not fused multiply adds)
 - However, can be useful for guiding the optimization work
 </div>
 <div class=column>
-![](img/simple-roofline.svg){.center width=90%}
+![](img/ceilings-roofline.svg){.center width=90%}
 </div>
 
 # Roofline model
@@ -278,6 +290,7 @@ $$
 - How to obtain application GFLOPS/s and arithmetic intensity?
     - Pen and paper and timing measurements
 	- Performance analysis tools and hardware counters
+	- *True* number of memory references can be difficult to obtain
 
 # Take-home messages
 

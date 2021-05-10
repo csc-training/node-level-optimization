@@ -11,7 +11,7 @@
    viewBox="0 0 1059.9005 525.02097"
    stroke-miterlimit="10"
    id="svg251"
-   sodipodi:docname="simple-roofline.svg"
+   sodipodi:docname="ceilings-roofline.svg"
    inkscape:version="0.92.2 (5c3e80d, 2017-08-06)"
    width="1059.9005"
    height="525.021"
@@ -44,8 +44,8 @@
      id="namedview253"
      showgrid="false"
      inkscape:zoom="1.5504254"
-     inkscape:cx="580.45348"
-     inkscape:cy="111.11575"
+     inkscape:cx="719.44759"
+     inkscape:cy="113.69569"
      inkscape:window-x="1920"
      inkscape:window-y="25"
      inkscape:window-maximized="1"
@@ -591,4 +591,34 @@
        id="tspan1027"
        x="651.2243"
        y="509.70966">32</tspan></text>
+  <path
+     d="M 482.01733,201.03293 H 1059.1146"
+     id="path920"
+     inkscape:connector-curvature="0"
+     style="fill:#505050;fill-opacity:1;fill-rule:nonzero;stroke:#525252;stroke-width:2.22367311;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+     style="fill:#505050;fill-opacity:1;fill-rule:nonzero;stroke:#525252;stroke-width:2.45231652;stroke-linecap:butt;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1"
+     inkscape:connector-curvature="0"
+     id="path922"
+     d="M 422.67878,253.27666 H 1059.1146" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+     x="575.66748"
+     y="194.21866"
+     id="text926"><tspan
+       sodipodi:role="line"
+       id="tspan928"
+       x="575.66748"
+       y="194.21866">Vector add</tspan></text>
+  <text
+     id="text932"
+     y="274.84171"
+     x="576.99823"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+     xml:space="preserve"><tspan
+       sodipodi:role="line"
+       id="tspan934"
+       x="576.99823"
+       y="274.84171">Scalar add</tspan></text>
 </svg>
