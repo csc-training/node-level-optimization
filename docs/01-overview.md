@@ -197,7 +197,7 @@ end do
 
 # Code optimization cycle
 
-![](img/perf-analysis-single-core.svg){.center width=60%}
+![](img/perf-analysis-single-node.svg){.center width=60%}
 
 # How to assess application's performance?
 
