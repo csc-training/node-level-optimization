@@ -231,11 +231,11 @@ end do
 
 # How to assess application's performance?
 
-- Example: matrix-matrix multiplication `C[i,j] = A[i,k] * B[k,j]`
-    - $N^3$ FLOPS
+- Example: matrix-matrix multiplication `C[i,j] = C[i,j] + A[i,k] * B[k,j]`
+    - $2 N^3$ FLOPS
 	- $3 N^2$ memory references
 	- With double precision numbers arithmetic intensity
-      $I=\frac{N}{3}$ FLOPS/byte
+      $I=\frac{2 N}{3}$ FLOPS/byte
 	- With large enough $N$ limited by peak performance
 
 
