@@ -37,7 +37,7 @@ lang:   en
 
 <div class=column>
 - Choose good algorithm
-    - e.g. $O(N \mathrm{log} N)$ vs. $O(N^2$)
+    - e.g. $O(N \mathrm{log} N)$ vs. $O(N^2)$
     - remember prefactor!
 - Use high performance libraries
     - linear algebra (BLAS/LAPACK), FFTs, ...
@@ -57,6 +57,7 @@ With recursion, Fibonacci number i=20 is 6765
 Time elapsed 343773 ums
 ```
 <br>
+<!-- Copyright CSC -->
 ![](img/optimal_performance.svg){.center width=80%}
 
 </div>
@@ -65,13 +66,44 @@ Time elapsed 343773 ums
 
 - You can make a big difference to code performance with how you
   express things
-    - Helping the compiler spot optimisation opportunities
-    - Using the insight of your application - language semantics might
-      limit compiler
-    - Removing obscure (and obsolescent) “optimizations” in older code
-        - Simple code is the best, until otherwise proven
+- Helping the compiler spot optimisation opportunities
+- Using the insight of your application 
+    - language semantics might limit compiler
+- Removing obscure (and obsolescent) “optimizations” in older code
+    - Simple code is the best, until otherwise proven
 - This is a dark art, mostly: optimize on case-by-case basis
     - First, check what the compiler is already doing
+
+# What the compiler is doing? {.table-colour}
+
+<div class=column>
+- Compilers have vast amount of heuristics for optimizing common
+  programming patters
+- Most compilers can provide a report about optimizations performed,
+  with various amount of detail
+    - See compiler manuals for all options
+- Look into assembly code with 
+  <br> `-S -fverbose-asm`
+
+</div>
+<div class=column>
+
+| Compiler    |  Opt. report               |
+| ----------- | -------------------------- |
+| GNU         | `-fopt-info`               |
+| Intel       | `-qopt-report`             |
+| Clang       | `-Rpass=.*`                |
+
+<br>
+
+```
+...
+  vfmadd213pd %ymm0, %ymm2, %ymm10
+  vfmadd213pd %ymm0, %ymm2, %ymm9 
+  vfmadd213pd %ymm0, %ymm2, %ymm8 
+...
+```
+</div>
 
 # Measuring performance {.section}
 
@@ -129,7 +161,7 @@ end do
 	- “Premature code optimization is the root of all evil”
 - Choose test case which represents a real production run
 - Measurements should be carried out on the target platform
-    - "Toy" run on laptop provides typically only limited information
+    - "Toy" run on laptop may provide only limited information
 	
 # Profiling application
 
@@ -158,6 +190,7 @@ end do
 ```
 </small>
 
+<!-- Copyright CSC -->
 ![](img/vtune-shot.png)
 
 </div>
@@ -197,6 +230,7 @@ end do
 
 # Code optimization cycle
 
+<!-- Copyright CSC -->
 ![](img/perf-analysis-single-node.svg){.center width=60%}
 
 # How to assess application's performance?
@@ -214,6 +248,7 @@ end do
 </div>
 
 <div class=column>
+<!-- Copyright CSC -->
 ![](img/cpu-memory.svg){.center width=50%}
 </div>
 
@@ -259,9 +294,10 @@ $$
 
 </div>
 <div class=column>
+<!-- Copyright CSC -->
 ![](img/simple-roofline.svg){.center width=90%}
-<!-- https://crd.lbl.gov/departments/computer-science/par/research/roofline/introduction/ -->
 <br>
+<!-- https://crd.lbl.gov/departments/computer-science/par/research/roofline/introduction/ -->
 ![](img/arithmetic-intensity.png){.center width=70%}
 
 
@@ -278,6 +314,7 @@ $$
 - However, can be useful for guiding the optimization work
 </div>
 <div class=column>
+<!-- Copyright CSC -->
 ![](img/ceilings-roofline.svg){.center width=90%}
 </div>
 
