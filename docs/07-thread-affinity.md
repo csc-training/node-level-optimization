@@ -12,8 +12,9 @@ lang:   en
 - Operating system may even move running task from one core to another
     - Can be beneficial for load balancing
 	- For HPC workloads often detrimental as private caches get
-      invalidated
+      invalidated and NUMA locality is lost
 - User can control where tasks are run via affinity masks
+    - Task can be *pinned* to a specific logical core or set of logical cores
 
 # Controlling affinity
 
@@ -24,7 +25,7 @@ lang:   en
 	- Threads "inherit" the affinity of their parent process
 - Affinity of a thread can be set with OpenMP environment variables
     - `OMP_PLACES=[threads,cores,sockets]`
-	- `OMP_PROC_BIND=[true, close, spread]`
+	- `OMP_PROC_BIND=[true, close, spread, master]`
 - OpenMP runtime prints the affinity with `OMP_DISPLAY_AFFINITY=true`
 
 # Controlling affinity
@@ -49,34 +50,6 @@ Thread 003 affinity 3,7
 ```
 
 
-# First touch memory allocation
-
-- Modern OS typically optimizes memory allocations
-    - `malloc()` does not allocate the memory directly
-	- Only the memory managements "knows" about the allocation, but
-	  no memory is made available
-	- OS physically allocates the memory only at the first write
-      access (*First touch policy*)
-- On NUMA systems memory access time between sockets varies
-    - Performance can be degragated if the thread *first touching* the
-      memory and the thread *using* the memory run in different sockets
-
-# NUMA optimization with OpenMP
-
-- NUMA issues from first touch policy can be mitigated when threads
-  are bind and the initialization of arrays is done in a parallel
-  region
-
-```
-// Initialize data
-#pragma omp parallel for
-for (int i=0; i < N; i++)
-  ...
-// Perform work
-#pragma omp parallel for
-for (int i=0; i < N; i++)
-  ...
-```
 
 # MPI+OpenMP thread affinity
 
@@ -116,9 +89,8 @@ Process 250546 thread 000 affinity 4-7
   
 # Summary
 
-- Performance of HPC is often improved when threads are pinned to CPU
-  cores
-- NUMA issues may degregate performance if *first touch* memory
-  allocation is not considered
+- Performance of HPC applications is often improved when processes and
+threads are pinned to CPU cores
 - MPI and batch system configurations may affect the affinity
+    - very system dependent, try to always investigate
 
