@@ -39,7 +39,7 @@ program laplacian
   do iter = 1, niters
   do i = 2, nx-1
      do j = 2, ny-1
-        L(i,j) = L(i,j) + (A(i-1,j) - 2.0*A(i,j) + A(i+1,j)) / dx**2 + &
+        L(i,j) = (A(i-1,j) - 2.0*A(i,j) + A(i+1,j)) / dx**2 + &
              (A(i,j-1) - 2.0*A(i,j) + A(i,j+1)) / dy**2
      end do
   end do
@@ -58,7 +58,7 @@ program laplacian
 
 
   write(*,*) 'numerical solution', meanL
-  write(*,*) 'analytic solution', 4.0*niters
+  write(*,*) 'analytic solution', 4.0
 
   write(*,*) 'time', t1 - t0
 
