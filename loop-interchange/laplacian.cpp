@@ -37,6 +37,7 @@ int main()
 
   double t0 = omp_get_wtime();
   // Compute Laplacian
+  #pragma nounroll
   for (int iter = 0; iter < niters; iter++)
     for (int j = 1; j < ny-1; j++)
       for (int i = 1; i < nx-1; i++)
