@@ -21,7 +21,7 @@ program laplacian
   integer :: iter
   integer, parameter :: niters = 50
 
-  real :: t0, t1
+  real(dp) :: t0, t1
 
   A%nx = 4096
   A%ny = 4096
@@ -45,11 +45,11 @@ program laplacian
 
   t0 = omp_get_wtime()
   ! Compute Laplacian of A and save it to L
-  do iter = 1, niters
   L%data = 0.0
+  do iter = 1, niters
   do i = 2, A%nx-1
      do j = 2, A%ny-1
-        L%data(i,j) = (A%data(i-1,j) - 2.0*A%data(i,j) + A%data(i+1,j)) / A%dx**2 + &
+        L%data(i,j) = L%data(i,j) + (A%data(i-1,j) - 2.0*A%data(i,j) + A%data(i+1,j)) / A%dx**2 + &
              (A%data(i,j-1) - 2.0*A%data(i,j) + A%data(i,j+1)) / A%dy**2
      end do
   end do
@@ -68,7 +68,7 @@ program laplacian
 
 
   write(*,*) 'numerical solution', meanL
-  write(*,*) 'analytic solution', 4.0
+  write(*,*) 'analytic solution', 4.0*niters
 
   write(*,*) 'time', t1 - t0
 

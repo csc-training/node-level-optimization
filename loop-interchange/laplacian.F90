@@ -9,13 +9,13 @@ program laplacian
   real(dp) :: meanL
   integer :: nx, ny, i, j
   integer :: iter
-  integer, parameter :: niters = 50
+  integer, parameter :: niters=50
 
-  real :: t0, t1
+  real(dp) :: t0, t1
 
   nx = 4096
   ny = 4096
-  
+
   ! Grid spacing
   dx = 1.0/real(nx-1)
   dy = 1.0/real(ny-1)
@@ -35,11 +35,11 @@ program laplacian
 
   t0 = omp_get_wtime()
   ! Compute Laplacian of A and save it to array L
-  do iter = 1, niters
   L = 0.0
+  do iter = 1, niters
   do i = 2, nx-1
      do j = 2, ny-1
-        L(i,j) = (A(i-1,j) - 2.0*A(i,j) + A(i+1,j)) / dx**2 + &
+        L(i,j) = L(i,j) + (A(i-1,j) - 2.0*A(i,j) + A(i+1,j)) / dx**2 + &
              (A(i,j-1) - 2.0*A(i,j) + A(i,j+1)) / dy**2
      end do
   end do
@@ -58,7 +58,7 @@ program laplacian
 
 
   write(*,*) 'numerical solution', meanL
-  write(*,*) 'analytic solution', 4.0
+  write(*,*) 'analytic solution', 4.0*niters
 
   write(*,*) 'time', t1 - t0
 
