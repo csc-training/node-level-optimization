@@ -9,4 +9,37 @@ Lecture slides are found in the [course web page](https://events.prace-ri.eu/eve
 
 ## Exercises
 
-General instructions
+ - [General instructions](exercise-instructions.md)
+
+### Performance limits
+
+ - [Laptop rooflines](laptop-rooflines)
+
+### Getting started with Puhti and Mahti
+
+ - 
+
+### Performance tools
+
+ - [Using Intel VTune](vtune)
+
+### Vectorization
+
+ - [Improving performance through vectorization](vectorization)
+
+### Memory optimization
+
+ - [Loop interchange](loop-interchange)
+ - [Cache blocking](cache-blocking)
+ - [Conflict misses](conflict-miss)
+
+### Miscallenous optimizations
+
+ - [Fast mathematics](math)
+ - [Branch prediction](branch-prediction)
+
+### OpenMP tasks
+
+### Threading optimization
+
+ - [Thread affinity](thread-affinity)
