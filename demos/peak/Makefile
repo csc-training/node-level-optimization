@@ -22,7 +22,7 @@ VECTOR_WIDTH=4
 AVX=-xCORE-AVX2 -fma
 # AVX512
 # VECTOR_WIDTH=8
-# AVX=-xCORE-AVX512 -qopt-zmm-usage=value -fma
+# AVX=-xCORE-AVX512 -qopt-zmm-usage=high -fma
 CFLAGS = $(OPT) $(AVX) -qopenmp
 endif
 
