@@ -1,3 +1,8 @@
+ifeq ($(COMP),)
+COMP=gnu
+endif
+
+ifeq ($(COMP),gnu)
 CC=g++
 OPT=-O2 -ffast-math
 # AVX2
@@ -7,6 +12,31 @@ AVX=-march=native -mfma
 # VECTOR_WIDTH=8
 # AVX=-march=native -mfma -mprefer-vector-width=512
 CFLAGS = $(OPT) $(AVX) -fopenmp
+endif
+
+ifeq ($(COMP),intel)
+CC=icpc
+OPT=-O2 
+# AVX2
+VECTOR_WIDTH=4
+AVX=-xCORE-AVX2 -fma
+# AVX512
+# VECTOR_WIDTH=8
+# AVX=-xCORE-AVX512 -qopt-zmm-usage=value -fma
+CFLAGS = $(OPT) $(AVX) -qopenmp
+endif
+
+ifeq ($(COMP),clang)
+CC=clang++
+OPT=-O2 -ffast-math
+# AVX2
+VECTOR_WIDTH=4
+AVX=-march=native -mfma
+# AVX512
+# VECTOR_WIDTH=8
+# AVX=-march=native -mfma -mprefer-vector-width=512
+CFLAGS = $(OPT) $(AVX) -fopenmp
+endif
 
 # modify for investigating effects of pipeline fill and register usage
 NUM_OPS=8
