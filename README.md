@@ -13,11 +13,11 @@ Lecture slides are found in the [course web page](https://events.prace-ri.eu/eve
 
 ### Performance limits
 
- - [Laptop rooflines](laptop-rooflines)
+ - [Performance limits](performance-limits)
 
 ### Getting started with Puhti and Mahti
 
- - 
+ - [Getting started with CSC supercomputers](puhti-mahti)
 
 ### Performance tools
 
