@@ -11,7 +11,7 @@ lang:   en
 - Basic considerations for cache efficiency
     - Loop traversal and interchange
 	- Data structures
-- Loop transformation techniques
+- Cache optimization techniques
     - Cache blocking
 
 # Deeper view into data caches {.section}
@@ -35,11 +35,9 @@ lang:   en
 	- L3 1-4 MiB / core
 - Terminology
     - *Cache hit*: the requested data is in the cache
-    - *Cache miss*: the data is not in the cache
-- Optimizing use of caches is extremely important to leverage the full 
+    - *Cache miss*: the requested data is not in the cache
+- Optimizing the use of caches is extremely important to leverage the full 
   power of modern CPUs
-
-
 
 # Cache organization
 
@@ -49,7 +47,8 @@ lang:   en
     - Cache replacement policy determines which line is evicted	
 - *Inclusive* cache: all the lines in the upper-level cache are also in the lower level
 - *Exclusive* cache: lines in the upper-level cache are not in the lower level
-- Cache can be also non-inclusive non-exclusive, *i.e.* line may or not be present in lower-level cache
+- Cache can be also non-inclusive non-exclusive, *i.e.* line may or
+  may not be present in lower-level cache
 
 # Write policies
 
@@ -62,22 +61,23 @@ lang:   en
 
 # Cache associativity
 
-- A cache with the size of 32 KiB can fit 32 KiB / 64 B = 512 entries of 
-  cache lines
+- A cache with the size of 32 KiB can fit 32 KiB / 64 B = 512 cache lines
 - In *fully associate* cache, each of the 512 entries can contain any 
   memory location 
-    - Each entry needs to be checked for a hit which can become expensive for 
+    - Each entry needs to be checked for a hit which can be expensive for 
 	  large caches
-- In *direct mapped* cache, each memory location maps into exactly one entry
+- In *direct mapped* cache, each memory location maps into exactly one
+  cache line
     - Part of the cache is not fully utilized if memory addresses are not 
-	  evenly distributed: some entries are evicted repeteadly while others 
+	  evenly distributed: some cache lines are evicted repeteadly while others 
 	  remain empty
 - Set associative caches can achieve best of the both worlds: efficient search
   and good utilization
   
 # Set associative cache
 
-- A N-way set associative cache is divided into sets with N entries
+- A N-way set associative cache is divided into sets with N cache
+  lines in each
     - 8-way set associative 32 KiB cache has 64 sets with 8 cache line 
 	  entries per set
 - A memory address is mapped into any entry within a **set**
@@ -86,11 +86,14 @@ lang:   en
 	  still possible
 - Fully associative and direct mapped as limiting cases N=$\infty$ and N=1
 
- 
+# Example: 2-way set associative cache
+
+![](img/set-associative-cache.svg){.center width=60%}
 
 # Types of cache misses
 
 - Compulsory misses: happens the first time a memory address is accessed
+    - Prefetching may prevent compulsory misses
 - Capacity misses: happens when data the data is evicted due to cache becoming 
   full
     - Can be caused by bad spatial and temporal locality of data in the 
@@ -118,7 +121,7 @@ lang:   en
 ![](img/fortran-array-layout.svg){.center width=70%}
 <br>
 
-- Compiler optimizations often permute the loop indices automatically if possible
+- Compiler optimizations may permute the loop indices automatically if possible
 </div>
 
 # Loop interchage example: Fortran
@@ -366,20 +369,26 @@ end do
 - Modern CPUs try to predict data usage patterns and prefetch data to 
   caches before it is actually needed
     - Can alleviate even compulsory misses
-- Typically implemented with 
-    - Hardware
-	- Software directives and intrinsinc functions (compiler and/or the 
-	  programmer)
-    
+- Prefetching can be requested also by software
+    - Compiler
+	- Programmer via software directives and intrinsinc functions
+	- Difficult optimization: 
+	    - Too early: cache is filled with unnecessary data
+		- Too late: CPU has to wait for the data
 
-# Data streaming
+	
+# Non-temporal stores
 
-- With *write-allocate* policy data is always read before
+- With *write-allocate* policy, a write miss incurs a load from main memory
 - If data is going to be just written and not reused, some CPUs contain 
   instructions for bypassing the cache by writing directly into the memory
-  with *streaming stores*
-- Streaming stores can be used via pragmas, compiler options, or intrinsincs
+  with *non-temporal stores*
+- Non-temporal stores can be used via pragmas, compiler options, or intrinsincs
     - `omp simd nontemporal(list)` (OpenMP 5.0)
+	- Possible benefits depend a lot on application, and misuse can degragade 
+	  performance
+    - Hardware may also recognize access pattern and switch into 
+	  non-temporal stores
 
 # Summary
 

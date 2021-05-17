@@ -33,7 +33,8 @@ Intel OneAPI toolkits include compilers, high performance libraries,
 as well as performance analysis tools. We recommend to install both
 the base toolkit, as well as the HPC toolkit (note that Fortran
 compiler is included only in the HPC toolkit). Both toolkits provide
-various installation options.
+various installation options, and can be installed also with normal
+user priviliges.
 
 The Base toolkit can be downloaded from
 https://software.intel.com/content/www/us/en/develop/tools/oneapi/base-toolkit/download.html
@@ -56,7 +57,7 @@ https://developer.amd.com/amd-uprof/
 ## Using CSC supercomputers
 
 General instructions on using Mahti and Puhti can be found in [CSC user
-documentation](https://docs.csc.fi/computing/overview/)
+documentation](https://docs.csc.fi/computing/overview/).
 
 CSC's Mahti and Puhti supercomputers can be accessed via ssh using the
 provided username (`trainingxxx`) and password:
@@ -105,7 +106,7 @@ cd $USER
 
 The login nodes in Mahti and Puhti should be used only for compilation
 and looking at the performance analysis results. All the runs need to
-be done via the batch system. In order to minimze queuing time, a set
+be done via the batch system. In order to minimize queuing time, a set
 of nodes has been reserved during the course days at 09:00 - 17:00 (EEST).
 Jobs can be submitted to reservation with
 ```
@@ -127,7 +128,7 @@ or
 module load intel
 ```
 The Intel module contains the 19.0 compiler version, however, for this
-course we recommend that you use a **test** installation of the latest
+course we recommend that you use a **test installation** of the latest
 Intel OneAPI, which can be activated as:
 ```
 module purge
@@ -233,7 +234,7 @@ specified with `-O`, and it can be opened with AMD uProf GUI:
 ```
 AMDuProf &
 ```
-and the "Import Session". 
+followed by "Import Session". 
 
 You can also copy the full directory (both `.caperf` and `.ri` files)
 into your local laptop, and examine the results
