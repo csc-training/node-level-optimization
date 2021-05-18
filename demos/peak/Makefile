@@ -48,7 +48,7 @@ fma: peak_flops.cpp kernels.hpp
 add: peak_flops.cpp kernels.hpp
 	$(CC) -o peak_add -DKERNEL_ADD -DVECTOR_WIDTH=$(VECTOR_WIDTH) -DNUM_OPS=$(NUM_OPS) $(CFLAGS) peak_flops.cpp
 mul: peak_flops.cpp kernels.hpp
-	$(CC) -o peak_mul -DKERNEL_ADD -DVECTOR_WIDTH=$(VECTOR_WIDTH) -DNUM_OPS=$(NUM_OPS) $(CFLAGS) peak_flops.cpp
+	$(CC) -o peak_mul -DKERNEL_MUL -DVECTOR_WIDTH=$(VECTOR_WIDTH) -DNUM_OPS=$(NUM_OPS) $(CFLAGS) peak_flops.cpp
 
 clean:
 	rm -f peak_fma peak_add peak_mul

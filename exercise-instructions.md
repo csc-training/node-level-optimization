@@ -222,7 +222,7 @@ used, so one should select up to six performance events, e.g.
 
 ```
 #SBATCH ...
-srun srun AMDuProfCLI collect -e RETIRED_INST -e L1_DC_ACCESSES.ALL -O $PWD/prof-$SLURM_JOBID ./my_exe
+srun AMDuProfCLI collect -e RETIRED_INST -e L1_DC_ACCESSES.ALL -O $PWD/prof-$SLURM_JOBID ./my_exe
 ```
 Available events can be listed with 
 ```
