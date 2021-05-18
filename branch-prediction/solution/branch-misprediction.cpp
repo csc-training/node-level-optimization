@@ -53,7 +53,8 @@ int main(int argc, char** argv)
     // TODO sort the data
     std::sort(data.begin(), data.end());
 
-    test_memory(data, 6);
+    auto mean = test_memory(data, 6);
+    std::cout << "Sum: " << mean / (SIZE*REPETITIONS) << std::endl;
 
     return 0;
 }
