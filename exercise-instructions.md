@@ -190,8 +190,15 @@ or
 ```
 module load intel
 ```
-Note that in Mahti only Intel 19.0 compiler is available, and some
-compiler options produce binaries that cannot be run on AMD CPUs.
+The Intel module contains the 19.0 compiler version, but there is similar 
+**test installation** of the latest
+Intel OneAPI as in Puhti:
+```
+module purge
+source /appl/opt/testing/intel-oneapi/setvars.sh
+```
+Note that some Intel compiler options produce binaries that cannot be run on AMD CPUs.
+
 
 When running OpenMP programs via the batch job system, one needs to use the `--cpus-per-task` Slurm option and the `OMP_NUM_THREADS` environment variable. 
 Simple job running with 32 OpenMP threads can be submitted with the following batch job script:
