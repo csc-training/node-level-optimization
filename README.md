@@ -31,7 +31,6 @@ Lecture slides are found in the [course web page](https://events.prace-ri.eu/eve
 
  - [Loop interchange](loop-interchange)
  - [Cache blocking](cache-blocking)
- - [Conflict misses](conflict-miss)
 
 ### Miscallenous optimizations
 
