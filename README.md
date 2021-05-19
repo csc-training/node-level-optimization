@@ -43,6 +43,8 @@ Lecture slides are found in the [course web page](https://events.prace-ri.eu/eve
 
 ### OpenMP tasks
 
+ - [OpenMP tasks](omp-tasks)
+
 ### Threading optimization
 
  - [Simple thread affinity](thread-affinity)
