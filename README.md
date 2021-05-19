@@ -7,6 +7,10 @@ of the course is found in the `master` branch, previous versions can be found in
 
 Lecture slides are found in the [course web page](https://events.prace-ri.eu/event/1200/)
 
+## Information about compilers
+
+[Selected options](compiler-options.md)
+
 ## Exercises
 
  - [General instructions](exercise-instructions.md)
