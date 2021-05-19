@@ -357,6 +357,23 @@ end do
 ![](img/cache-blocking3.png){.center width=50%}
 </div>
 
+# Cache blocking with OpenMP
+
+- OpenMP 5.1 standard has `tile` construct for blocking
+    - Compiler support not necessarily ready yet
+
+```fortran
+!$omp tile sizes(4, 4)
+do j=1, 8
+  do i=1, 16
+    a(i,j) = u(i-1, j) + u(i+1, j) &
+	       - 4*u(i,j)              &
+		   + u(i,j-1) + u(i,j+1)
+  end do
+end do
+!$omp end tile
+```
+
 # Array padding
 
 - When data is accessed in strides which are multiple of the cache set size, 
@@ -366,7 +383,8 @@ end do
     - Example: in `float a[1024][1024]` each column maps into a same set
 - Array padding, *i.e.* allocating extra data can in some cases reduce conflict
   misses
-     - `float a[1024 + 1][1024]`
+     - `float a[1024 + 16][1024]`
+     - Padding should preferably preserve alignment of data
 	 
 # Prefetching
 
