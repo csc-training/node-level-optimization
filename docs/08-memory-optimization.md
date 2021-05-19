@@ -50,6 +50,10 @@ lang:   en
 - Cache can be also non-inclusive non-exclusive, *i.e.* line may or
   may not be present in lower-level cache
 
+# Cache organization
+
+![](img/cache-line.svg){.center width=60%}
+
 # Write policies
 
 - Most modern CPUs employ a *write-back* cache write policy

@@ -236,10 +236,11 @@ double x3 = x*x*x  // instead of pow(x, 3)
     - Reduces function call overhead
 	- If function is called within a loop, may provide additional optimization 
 	  prospects
+- Compiler uses heuristics to decide if inlining is beneficial
+    - Might require "interprocedural optimization" options
+- In C/C++ `inline` keyword is *hint* for the compiler to inline
 - In Fortran, programmer can force inlining only via compiler directives, 
   otherwise compiler makes the decision whether to inline a function 
-- In C/C++ `inline` keyword can be used
-    - Compiler can inline also other functions
 - Overuse of inlining increases the executable size and may hurt performance
   
 # Intrinsic functions
