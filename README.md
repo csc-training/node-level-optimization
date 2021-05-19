@@ -45,4 +45,5 @@ Lecture slides are found in the [course web page](https://events.prace-ri.eu/eve
 
 ### Threading optimization
 
- - [Thread affinity](thread-affinity)
+ - [Simple thread affinity](thread-affinity)
+ - [Thread affinity in heat equation](heat)
