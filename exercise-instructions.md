@@ -224,6 +224,8 @@ done via batch system using the command line mode with the
 
 ```
 #SBATCH ...
+#SBATCH --partition=test
+
 srun AMDuProfCLI collect --config tbp -o $PWD/prof-$SLURM_JOBID ./my_exe
 ```
 Available performance analysis configurations can be listed with 
@@ -231,15 +233,14 @@ Available performance analysis configurations can be listed with
 AMDuProfCLI info --list collect-configs
 ```
 
-The raw profile is stored in `.caperf` format in the directory
-specified with `-O`, and it can be opened with AMD uProf GUI:
+The profile is stored in the directory
+specified with `-o`, and it can be opened with AMD uProf GUI:
 ```
 AMDuProf &
 ```
 followed by "Import Session". 
 
-You can also copy the full directory (both `.caperf` and `.ri` files)
-into your local laptop, and examine the results
+You can also copy the full directory into your local laptop, and examine the results
 with AMDuProf there.
 
 
