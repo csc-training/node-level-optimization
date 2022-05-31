@@ -5,7 +5,7 @@ of the course is found in the `master` branch, previous versions can be found in
 
 ## Lecture slides
 
-Lecture slides are found in the [course web page](https://events.prace-ri.eu/event/1200/)
+Lecture slides are found in the [course web page](https://events.prace-ri.eu/event/1367/)
 
 ## Information about compilers
 
