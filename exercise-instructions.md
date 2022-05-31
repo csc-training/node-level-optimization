@@ -128,7 +128,7 @@ or
 module load intel
 ```
 The Intel module contains the 19.0 compiler version, however, for this
-course we recommend that you use a **test installation** of the latest
+course we recommend that you use a **test installation** of the more recent
 Intel OneAPI, which can be activated as:
 ```
 module purge
@@ -178,21 +178,17 @@ with VTune GUI there.
 
 ### Using Mahti
 
-Mahti has GNU, AMD and Intel compiler suites available via modules as
+Mahti has GNU and AMD suites available via modules as
 ```
 module load gcc
 ```
-,
+and
 ```
 module load clang
 ```
-or
-```
-module load intel
-```
-The Intel module contains the 19.0 compiler version, but there is similar 
-**test installation** of the latest
-Intel OneAPI as in Puhti:
+
+Intel compiler is currently not supported by CSC in Mahti. There is, however, 
+ similar **test installation** of Intel OneAPI as in Puhti:
 ```
 module purge
 source /appl/opt/testing/intel-oneapi/setvars.sh
@@ -224,16 +220,15 @@ module load amduprof
 
 When using AMD uprof, the collection of the performance results should be
 done via batch system using the command line mode with the
-`AMDuProfCLi` command. Currently, predefined configurations cannot be
-used, so one should select up to six performance events, e.g.
+`AMDuProfCLi` command. Kernel priviliges required by AMD uprof are available only in the `test` partition
 
 ```
 #SBATCH ...
-srun AMDuProfCLI collect -e RETIRED_INST -e L1_DC_ACCESSES.ALL -O $PWD/prof-$SLURM_JOBID ./my_exe
+srun AMDuProfCLI collect --config tbp -o $PWD/prof-$SLURM_JOBID ./my_exe
 ```
-Available events can be listed with 
+Available performance analysis configurations can be listed with 
 ```
-AMDuProfCLI info --list predefined-events
+AMDuProfCLI info --list collect-configs
 ```
 
 The raw profile is stored in `.caperf` format in the directory
