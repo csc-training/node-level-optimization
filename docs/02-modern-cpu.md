@@ -196,12 +196,12 @@ less than one
 - A node can have multiple sockets with memory attached to each socket
 - Non Uniform Memory Access (NUMA)
     - All memory within a node is accessible, but latencies and bandwidths vary
-- Hardware needs to maintain cahce coherency also between different NUMA nodes (ccNUMA)
+- Hardware needs to maintain cache coherency also between different NUMA nodes (ccNUMA)
 </div>
 
 <div class=column>
 <!-- Image copyright CSC, see LICENSE -->
-![](img/numa.png){.center width=70%}
+![](img/numa-schematic.png){.center width=70%}
 </div>
 
 # Summary
