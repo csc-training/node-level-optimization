@@ -58,7 +58,7 @@ Time elapsed 343773 ums
 ```
 <br>
 <!-- Copyright CSC -->
-![](img/optimal_performance.svg){.center width=80%}
+![](img/optimal_performance.png){.center width=80%}
 
 </div>
 
@@ -231,13 +231,13 @@ end do
 # Code optimization cycle
 
 <!-- Copyright CSC -->
-![](img/perf-analysis-single-node.svg){.center width=60%}
+![](img/perf-analysis-single-node.png){.center width=60%}
 
 # How to assess application's performance?
 
 <div class=column>
 - Two fundamental limits
-- CPUs peak floating point performance
+- CPU's peak floating point performance
     - clock frequency
 	- number of instructions per clock cycle
 	- number of FLOPS per instruction
@@ -249,7 +249,7 @@ end do
 
 <div class=column>
 <!-- Copyright CSC -->
-![](img/cpu-memory.svg){.center width=50%}
+![](img/cpu-memory.png){.center width=50%}
 </div>
 
 # How to assess application's performance?
@@ -295,7 +295,7 @@ $$
 </div>
 <div class=column>
 <!-- Copyright CSC -->
-![](img/simple-roofline.svg){.center width=90%}
+![](img/simple-roofline.png){.center width=90%}
 <br>
 <!-- https://crd.lbl.gov/departments/computer-science/par/research/roofline/introduction/ -->
 ![](img/arithmetic-intensity.png){.center width=70%}
@@ -315,7 +315,7 @@ $$
 </div>
 <div class=column>
 <!-- Copyright CSC -->
-![](img/ceilings-roofline.svg){.center width=90%}
+![](img/ceilings-roofline.png){.center width=90%}
 </div>
 
 # Roofline model
@@ -324,7 +324,7 @@ $$
     - CPU specs
 	- own microbenchmarks
 	- special tools (Intel tools, Empirical Roofline Tool)
-- How to obtain application GFLOPS/s and arithmetic intensity?
+- How to obtain application's GFLOPS/s and arithmetic intensity?
     - Pen and paper and timing measurements
 	- Performance analysis tools and hardware counters
 	- *True* number of memory references can be difficult to obtain
