@@ -11,7 +11,7 @@ lang:   en
 - Mathematical routines
 - Branches
 - Function inlining
-- Intrincic functions
+- Intrinsic functions
 
 # Loop transformations {.section}
 
@@ -26,8 +26,8 @@ lang:   en
     - Understanding the concepts is still be useful for the programmer
 - In some cases manual programming can be useful
     - When misused, transformation can be disadvantageous for performance
-	- Readability of code often suffers
-	
+        - Readability of code often suffers
+
 # Loop unrolling
 
 <div class=column>
