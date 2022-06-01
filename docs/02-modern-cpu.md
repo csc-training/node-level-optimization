@@ -154,7 +154,8 @@ less than one
 
 # Memory alignment
 
-![](img/alignment.png){.center width=60%}
+![](img/alignment.png){.center width=80%}
+<br>
 
 - If data is badly aligned and spans over cache line (*e.g.* 4 byte `float` would have 63 byte 
   alignment) performance may suffer
