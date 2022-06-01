@@ -44,8 +44,8 @@
      id="namedview4"
      showgrid="false"
      inkscape:zoom="1"
-     inkscape:cx="5.5159094"
-     inkscape:cy="162.95165"
+     inkscape:cx="3.4275581"
+     inkscape:cy="158.95165"
      inkscape:window-x="0"
      inkscape:window-y="25"
      inkscape:window-maximized="1"
@@ -500,12 +500,12 @@
   <text
      xml:space="preserve"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#000000"
-     x="45.801941"
+     x="55.707748"
      y="332.7005"
      id="text893"><tspan
        sodipodi:role="line"
        id="tspan895"
-       x="45.801941"
+       x="55.707748"
        y="332.7005">Memory interface</tspan></text>
   <path
      inkscape:connector-curvature="0"
@@ -962,11 +962,11 @@
   <text
      id="text1245"
      y="332.7005"
-     x="406.80194"
+     x="416.70776"
      style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#000000"
      xml:space="preserve"><tspan
        y="332.7005"
-       x="406.80194"
+       x="416.70776"
        id="tspan1243"
        sodipodi:role="line">Memory interface</tspan></text>
   <path
