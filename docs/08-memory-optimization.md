@@ -292,60 +292,38 @@ end do
 - Consider a 2D Laplacian
 
 ```fortran
-do j=1, 8
-  do i=1, 16
+do j = 2, 15
+  do i = 2, 15
     a(i,j) = u(i-1, j) + u(i+1, j) &
-	       - 4*u(i,j)              &
-		   + u(i,j-1) + u(i,j+1)
+           - 4*u(i,j)              &
+           + u(i,j-1) + u(i,j+1)
   end do
 end do
 ```
 
 - (Fictitious) cache structure
-    - Each line holds 4 elemets
-    - Cache can hold 12 lines of data
+    - Cache can hold 20 elements
+    - Fully associative
 - No cache reuse between outer loop iterations
 </div>
 <div class=column>
-![](img/cache-blocking1.png){.center width=50%}
+![](img/cache-blocking1.png){.center width=70%}
 </div>
+
 
 # Cache blocking example
 
 <div class=column>
-- Blocking the inner loop
+- Iterate over 4 x 4 blocks
 
 ```fortran
-do IBLOCK = 1, 16, 4
-  do j=1, 8
-    do i=1, IBLOCK, IBLOCK + 3
-      a(i,j) = u(i-1, j) + u(i+1, j) &
-	         - 4*u(i,j)              &
-		     + u(i,j-1) + u(i,j+1)
-    end do
-  end do
-end do
-```
-
-- Better reuse for the `j+1` data
-</div>
-<div class=column>
-![](img/cache-blocking2.png){.center width=50%}
-</div>
-
-# Cache blocking example
-
-<div class=column>
-- Iterate over 4x4 blocks
-
-```fortran
-do JBLOCK = 1, 8, 4
-  do IBLOCK = 1, 16, 4
-    do j=JBLOCK, JBLOCK + 3
-      do i=1, IBLOCK, IBLOCK + 3
+do JBLOCK = 2, 15, 4
+  do IBLOCK = 2, 15, 4
+    do j = JBLOCK, JBLOCK + 3
+      do i = 1, IBLOCK, IBLOCK + 3
         a(i,j) = u(i-1, j) + u(i+1, j) &
-	           - 4*u(i,j)              &
-		       + u(i,j-1) + u(i,j+1)
+               - 4*u(i,j)              &
+               + u(i,j-1) + u(i,j+1)
       end do
     end do
   end do
@@ -354,9 +332,35 @@ end do
 
 </div>
 <div class=column>
-![](img/cache-blocking3.png){.center width=50%}
+![](img/cache-blocking2.png){.center width=70%}
 </div>
 
+# Cache blocking example
+
+<div class=column>
+- Iterate over 4 x 4 blocks
+
+```fortran
+do JBLOCK = 2, 15, 4
+  do IBLOCK = 2, 15, 4
+    do j=JBLOCK, JBLOCK + 3
+      do i=1, IBLOCK, IBLOCK + 3
+        a(i,j) = u(i-1, j) + u(i+1, j) &
+               - 4*u(i,j)              &
+               + u(i,j-1) + u(i,j+1)
+      end do
+    end do
+  end do
+end do
+```
+
+- Without cache blocking: ~1000 misses
+- With cache blocking: ~270 misses
+
+</div>
+<div class=column>
+![](img/cache-blocking3.png){.center width=70%}
+</div>
 # Cache blocking with OpenMP
 
 - OpenMP 5.1 standard has `tile` construct for blocking
@@ -364,11 +368,11 @@ end do
 
 ```fortran
 !$omp tile sizes(4, 4)
-do j=1, 8
-  do i=1, 16
+do j= 2, 15 
+  do i = 2 , 15
     a(i,j) = u(i-1, j) + u(i+1, j) &
-	       - 4*u(i,j)              &
-		   + u(i,j-1) + u(i,j+1)
+           - 4*u(i,j)              &
+           + u(i,j-1) + u(i,j+1)
   end do
 end do
 !$omp end tile
@@ -379,13 +383,13 @@ end do
 - When data is accessed in strides which are multiple of the cache set size, 
   conflict misses may occur
     - In 8-way associative 32 KiB cache, there are 64 sets
-	- Memory address which are 64*64 = 4096 bytes apart map into a same set
+        - Memory address which are 64*64 = 4096 bytes apart map into a same set
     - Example: in `float a[1024][1024]` each column maps into a same set
 - Array padding, *i.e.* allocating extra data can in some cases reduce conflict
   misses
      - `float a[1024 + 16][1024]`
      - Padding should preferably preserve alignment of data
-	 
+
 # Prefetching
 
 - Modern CPUs try to predict data usage patterns and prefetch data to 
@@ -393,12 +397,12 @@ end do
     - Can alleviate even compulsory misses
 - Prefetching can be requested also by software
     - Compiler
-	- Programmer via software directives and intrinsinc functions
-	- Difficult optimization: 
-	    - Too early: cache is filled with unnecessary data
-		- Too late: CPU has to wait for the data
+    - Programmer via software directives and intrinsinc functions
+    - Difficult optimization: 
+        - Too early: cache is filled with unnecessary data
+        - Too late: CPU has to wait for the data
 
-	
+
 # Non-temporal stores
 
 - With *write-allocate* policy, a write miss incurs a load from main memory
@@ -407,14 +411,12 @@ end do
   with *non-temporal stores*
 - Non-temporal stores can be used via pragmas, compiler options, or intrinsincs
     - `omp simd nontemporal(list)` (OpenMP 5.0)
-	- Possible benefits depend a lot on application, and misuse can degragade 
-	  performance
-    - Hardware may also recognize access pattern and switch into 
-	  non-temporal stores
+    - Possible benefits depend a lot on application, and misuse can degragade performance
+    - Hardware may also recognize access pattern and switch into non-temporal stores
 
 # Summary
 
-- Efficient cache usage is on of the most important aspects for achieving 
+- Efficient cache usage is on of the most important aspects for achieving
   good performance
     - Exploite spatial and temporal locality
 - Progammer can improve the cache usage by optimizing data layouts and access
