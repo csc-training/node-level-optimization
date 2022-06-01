@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="svg2"
+   width="240.07327"
+   height="297.70193"
+   viewBox="0 0 240.07327 297.70193"
+   sodipodi:docname="cache-coherency.svg"
+   inkscape:version="0.92.2 (5c3e80d, 2017-08-06)">
+  <metadata
+     id="metadata8">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs6" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2048"
+     inkscape:window-height="1005"
+     id="namedview4"
+     showgrid="false"
+     inkscape:zoom="2.0665907"
+     inkscape:cx="62.434873"
+     inkscape:cy="143.62833"
+     inkscape:window-x="0"
+     inkscape:window-y="25"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <rect
+     style="opacity:1;fill:#95b3d7;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-miterlimit:3.4000001;stroke-dasharray:none;stroke-opacity:1"
+     id="rect833"
+     width="234.68605"
+     height="30.96888"
+     x="3.4194489"
+     y="179.60085"
+     ry="0.96777302" />
+  <rect
+     style="opacity:1;fill:#d3ebef;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2;stroke-miterlimit:3.4000001;stroke-dasharray:none;stroke-opacity:1"
+     id="rect835"
+     width="238.07327"
+     height="62.42165"
+     x="1"
+     y="234.28027"
+     ry="0.96777302" />
+  <rect
+     style="opacity:1;fill:#ea0000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.08664584;stroke-miterlimit:3.4000001;stroke-dasharray:none;stroke-opacity:1"
+     id="rect819"
+     width="59.656784"
+     height="46.138283"
+     x="7.6826615"
+     y="22.845314" />
+  <rect
+     style="opacity:1;fill:#254061;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.19393086;stroke-miterlimit:3.4000001;stroke-dasharray:none;stroke-opacity:1"
+     id="rect821"
+     width="59.656788"
+     height="30.619019"
+     x="7.6826615"
+     y="78.177483"
+     ry="0.9720304" />
+  <rect
+     style="opacity:1;fill:#376092;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.12907052;stroke-miterlimit:3.4000001;stroke-dasharray:none;stroke-opacity:1"
+     id="rect831"
+     width="68.596275"
+     height="33.904575"
+     x="3.2129178"
+     y="127.16552"
+     ry="0.92131144" />
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:#ececec"
+     x="28.405586"
+     y="100.14975"
+     id="text937"><tspan
+       sodipodi:role="line"
+       id="tspan951"
+       x="28.405586"
+       y="100.14975">L1</tspan></text>
+  <text
+     id="text941"
+     y="151.35902"
+     x="26.104805"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:#ececec"
+     xml:space="preserve"><tspan
+       sodipodi:role="line"
+       id="tspan953"
+       x="26.104805"
+       y="151.35902">L2</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#000000"
+     x="109.40504"
+     y="202.22884"
+     id="text945"><tspan
+       sodipodi:role="line"
+       id="tspan955"
+       x="109.40504"
+       y="202.22884">L3</tspan></text>
+  <text
+     id="text949"
+     y="270.22742"
+     x="79.689957"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:#000000"
+     xml:space="preserve"><tspan
+       sodipodi:role="line"
+       id="tspan957"
+       x="79.689957"
+       y="270.22742">Memory</tspan></text>
+  <path
+     style="fill:#000000;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 37.511055,161.69696 v 17.42"
+     id="path1072"
+     inkscape:connector-curvature="0" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-width:6;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 120.76248,211.05361 v 22.74277"
+     id="path1114"
+     inkscape:connector-curvature="0" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path958"
+     d="m 37.511055,109.98531 v 17.42"
+     style="fill:#000000;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <text
+     id="text962"
+     y="42.030731"
+     x="18.106106"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:0.89999998;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:#ececec"
+     xml:space="preserve"><tspan
+       sodipodi:role="line"
+       id="tspan1014"
+       x="18.106106"
+       y="42.030731">CPU</tspan><tspan
+       sodipodi:role="line"
+       id="tspan1016"
+       x="18.106106"
+       y="58.83073">regs</tspan></text>
+  <path
+     style="fill:#000000;stroke:#000000;stroke-width:6.87184381;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 37.511055,68.854766 V 77.08088"
+     id="path972"
+     inkscape:connector-curvature="0" />
+  <rect
+     y="22.845314"
+     x="173.65651"
+     height="46.138283"
+     width="59.656784"
+     id="rect974"
+     style="opacity:1;fill:#ea0000;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.08664584;stroke-miterlimit:3.4000001;stroke-dasharray:none;stroke-opacity:1" />
+  <rect
+     ry="0.9720304"
+     y="78.177483"
+     x="173.65651"
+     height="30.619019"
+     width="59.656788"
+     id="rect976"
+     style="opacity:1;fill:#254061;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.19393086;stroke-miterlimit:3.4000001;stroke-dasharray:none;stroke-opacity:1" />
+  <rect
+     ry="0.92131144"
+     y="127.16552"
+     x="169.18677"
+     height="33.904575"
+     width="68.596275"
+     id="rect978"
+     style="opacity:1;fill:#376092;fill-opacity:1;fill-rule:nonzero;stroke:#000000;stroke-width:2.12907052;stroke-miterlimit:3.4000001;stroke-dasharray:none;stroke-opacity:1" />
+  <text
+     id="text982"
+     y="100.14975"
+     x="194.37943"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:#ececec"
+     xml:space="preserve"><tspan
+       y="100.14975"
+       x="194.37943"
+       id="tspan980"
+       sodipodi:role="line">L1</tspan></text>
+  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:#ececec"
+     x="192.07864"
+     y="151.35902"
+     id="text986"><tspan
+       y="151.35902"
+       x="192.07864"
+       id="tspan984"
+       sodipodi:role="line">L2</tspan></text>
+  <path
+     inkscape:connector-curvature="0"
+     id="path988"
+     d="m 203.4849,161.69696 v 17.42"
+     style="fill:#000000;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <path
+     style="fill:#000000;stroke:#000000;stroke-width:10;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 203.4849,109.98531 v 17.42"
+     id="path990"
+     inkscape:connector-curvature="0" />
+  <path
+     inkscape:connector-curvature="0"
+     id="path998"
+     d="M 203.4849,68.854766 V 77.08088"
+     style="fill:#000000;stroke:#000000;stroke-width:6.87184381;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+  <flowRoot
+     xml:space="preserve"
+     id="flowRoot1000"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;line-height:1.25;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none"
+     transform="translate(-5.3227763,44.033876)"><flowRegion
+       id="flowRegion1002"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle"><rect
+         id="rect1004"
+         width="82.261093"
+         height="129.68217"
+         x="83.712753"
+         y="22.369234"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16px;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:center;writing-mode:lr-tb;text-anchor:middle" /></flowRegion><flowPara
+       id="flowPara1024">Cache </flowPara><flowPara
+       id="flowPara1026">coherency </flowPara><flowPara
+       id="flowPara1028">logic</flowPara></flowRoot>  <text
+     xml:space="preserve"
+     style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:18.66666603px;line-height:0.89999998;font-family:'Noto Sans';-inkscape-font-specification:'Noto Sans, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ececec;fill-opacity:1;stroke:#ececec"
+     x="184.07996"
+     y="42.030731"
+     id="text1022"><tspan
+       y="42.030731"
+       x="184.07996"
+       id="tspan1018"
+       sodipodi:role="line">CPU</tspan><tspan
+       y="58.83073"
+       x="184.07996"
+       id="tspan1020"
+       sodipodi:role="line">regs</tspan></text>
+</svg>
