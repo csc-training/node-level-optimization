@@ -1,7 +1,7 @@
 ---
 title: NUMA effects and thread/process affinity
 author: CSC Training
-date:   2022-05
+date:   2022-06
 lang:   en
 ---
 

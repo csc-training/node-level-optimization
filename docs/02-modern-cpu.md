@@ -1,7 +1,7 @@
 ---
 title:  A look into modern CPU architecture
 author: CSC Training
-date:   2021-05
+date:   2022-06
 lang:   en
 ---
 
@@ -137,12 +137,30 @@ less than one
 - L1 cache is closest to the CPU core and is fastest but has smallest capacity
 - Each successive level has higher capacity but slower access
 </div>
-  
+
 <div class=column>
 <!-- Image copyright CSC, see LICENSE -->
 ![](img/memory_hierarchy.svg){.center width=90%}
 </div>
 
+# Memory alignment
+
+- Computer memory can be thought as one dimensional array of bytes
+    - Each slot in the array (=byte) has an address
+- In principle, data *i.e.* content of a variable can be stored in any slot
+- The data is said to be **N**-byte aligned if its memory address is integer multiple of **N**
+- Memory is accessed in units of cache lines (typically 64 bytes), with corresponding alignment 
+ (*i.e.* 64 bytes)
+
+# Memory alignment
+
+![](img/alignment.png){.center width=60%}
+
+- If data is badly aligned and spans over cache line (*e.g.* 4 byte `float` would have 63 byte 
+  alignment) performance may suffer
+- In practice, language standards and compilers force *natural* alignment so that with 
+      scalar data bad alignment is rarely an issue
+  
 # Symmetric Multithreading (SMT)
 
 <div class=column>

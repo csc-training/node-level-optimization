@@ -1,7 +1,7 @@
 ---
 title:  Miscellaneous single core optimizations
 author: CSC Training
-date:   2021-05
+date:   2022-06
 lang:   en
 ---
 
