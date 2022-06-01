@@ -29,7 +29,7 @@ lang:   en
 
 - Single node performance
     - single core performance
-	- threading (and MPI within a node)
+    - threading (and MPI within a node)
 - Communication between nodes
 - Input/output to disk
 
