@@ -26,6 +26,7 @@ Lecture slides are found in the [course web page](https://events.prace-ri.eu/eve
 ### Performance tools
 
  - [Using Intel VTune](vtune)
+ - [Using Intel Advisor](advisor)
 
 ### Vectorization
 
