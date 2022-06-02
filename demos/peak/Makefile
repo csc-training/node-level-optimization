@@ -39,7 +39,7 @@ CFLAGS = $(OPT) $(AVX) -fopenmp
 endif
 
 # modify for investigating effects of pipeline fill and register usage
-NUM_OPS=8
+NUM_OPS=10
 
 all: fma add mul
 
