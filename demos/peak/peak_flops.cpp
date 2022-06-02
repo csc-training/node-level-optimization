@@ -35,7 +35,7 @@ int main() {
 #pragma omp parallel
   { } // Create the thread pool
 
-  double fcheck;
+  double fcheck = 0.0;
   const double t0 = omp_get_wtime(); // start timer
 #pragma omp parallel
   { 
@@ -60,9 +60,8 @@ int main() {
    // Prevent dead code elimination
    for (i=0, j=0; i < VECTOR_WIDTH; i++) {
        for (int n=0; n < NUM_OPS; n++, j++)
-          fa[j] *= 2.0; 
+         fcheck += fa[j];
     }
-    fcheck = fa[0];
   }
   
   const double t1 = omp_get_wtime();
@@ -73,5 +72,11 @@ int main() {
                         (double)omp_get_max_threads() * (double)NUM_OPS;
   printf("Num %ss=%d, vector width=%d, threads=%d GFLOPs=%.1f, time=%.6f s, performance=%.1f GFLOP/s\n",
          kernel_name, NUM_OPS, VECTOR_WIDTH, omp_get_max_threads(), gflops, t1 - t0, gflops/(t1 - t0));
+  
+  // print fcheck to dev/null to prevent too aggressive compiler optimizations
+  FILE* devnull;
+  devnull = fopen("/dev/null", "w");
+  fprintf(devnull, "fcheck %f", fcheck);
+  fclose(devnull);
 }
 
