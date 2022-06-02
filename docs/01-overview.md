@@ -239,10 +239,10 @@ end do
 - Two fundamental limits
 - CPU's peak floating point performance
     - clock frequency
-	- number of instructions per clock cycle
-	- number of FLOPS per instruction
-	- number of cores
-	- no real application achieves peak in sustained operation
+    - number of instructions per clock cycle
+    - number of FLOPS per instruction
+    - number of cores
+    - no real application achieves peak in sustained operation
 - Main memory bandwidth
     - How fast data can be fed to the CPU
 </div>
