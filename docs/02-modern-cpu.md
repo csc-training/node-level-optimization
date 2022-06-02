@@ -12,9 +12,9 @@ lang:   en
 <div class=column>
 - A CPU core is still largely based on the von Neumann model
     - sequency of operations (instructions) performed on given data
-	- instructions and data are fetched from memory into registers in CPU
-	- ALU performs operations on data in registers
-	- Result is stored back to memory
+    - instructions and data are fetched from memory into registers in CPU
+    - ALU performs operations on data in registers
+    - Result is stored back to memory
 - From an external point of view, operations are executed sequentially
 </div>
 <div class=column>
@@ -72,15 +72,15 @@ lang:   en
 - Instruction execution and arithmetic units can be *pipelined*
     - Instruction execution: work on multiple instructions
       simultaneously
-	- Arithmetic units: execute different stages of a an instruction
+    - Arithmetic units: execute different stages of a an instruction
       at the same time in an assembly line fashion
-	- Together: one result per cycle after the pipeline is full
+    - Together: one result per cycle after the pipeline is full
 - Within the pipeline, hardware can execute instructions in different 
  order than they were issued (**out-of-order** scheduling)
 - Requires complicated software (compiler) and hardware
    to keep the pipeline full
 - Conditional branches can cause the pipeline to stall
-		
+        
 # Pipelining: example
 
 <div class=column>
@@ -133,7 +133,7 @@ less than one
 <div class=column>
 - In order to alleviate the memory bandwidth bottleneck, CPUs have multiple levels of cache memory
     - when data is accessed, it will be first fetched into cache
-	- when data is reused, subsequent access is much faster
+    - when data is reused, subsequent access is much faster
 - L1 cache is closest to the CPU core and is fastest but has smallest capacity
 - Each successive level has higher capacity but slower access
 </div>
@@ -228,15 +228,15 @@ less than one
 - Modern multicore CPUs are complex beasts
 - In order to maximally utilize the CPU, application needs to:
     - use multiple threads (or processes)
-	- utilize caches for feeding data to CPU at fastest possible pace
-	- keep the pipeline full and utilize instruction level parallelism
-	- use vector instructions for maximizing FLOPS per instruction
+    - utilize caches for feeding data to CPU at fastest possible pace
+    - keep the pipeline full and utilize instruction level parallelism
+    - use vector instructions for maximizing FLOPS per instruction
 
 # Web resources
 
 - Detailed information about processor microarchitectures: 
     - <https://en.wikichip.org/wiki/WikiChip>
-	- <https://uops.info/>
+    - <https://uops.info/>
 - Agner's optimization resources <https://www.agner.org/optimize/>
-	
-	
+    
+    

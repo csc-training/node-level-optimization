@@ -10,7 +10,7 @@ lang:   en
 - Deeper view into data caches
 - Basic considerations for cache efficiency
     - Loop traversal and interchange
-	- Data structures
+    - Data structures
 - Cache optimization techniques
     - Cache blocking
 
@@ -24,15 +24,15 @@ lang:   en
 - For instance, on Intel Cascade lake
     - L1 cache: latency 4-6 cycles, sustained bandwidth 133 B/cycle/core
     - L2 cache: latency 14 cycles, sustained bandwidth 52 B/cycle/core
-	- L3 cache: latency 50-70 cycles, sustained bandwidth 16 B/cycle/core
+    - L3 cache: latency 50-70 cycles, sustained bandwidth 16 B/cycle/core
     - Main memory: latency 120-150 ns, bandwidth 128 GB/s per socket
 
 # Data caches
 
 - Sizes of the data caches are small compared to the main memory
     - L1 ~32 KiB
-	- L2 512-1024 KiB
-	- L3 1-4 MiB / core
+    - L2 512-1024 KiB
+    - L3 1-4 MiB / core
 - Terminology
     - *Cache hit*: the requested data is in the cache
     - *Cache miss*: the requested data is not in the cache
@@ -44,7 +44,7 @@ lang:   en
 - Cache is read and written in units of **cache lines**
     - 64 bytes in current x86 CPUs
 - Upon *miss*, a line is *evicted* from the cache and replaced by the new line
-    - Cache replacement policy determines which line is evicted	
+    - Cache replacement policy determines which line is evicted 
 - *Inclusive* cache: all the lines in the upper-level cache are also in the lower level
 - *Exclusive* cache: lines in the upper-level cache are not in the lower level
 - Cache can be also non-inclusive non-exclusive, *i.e.* line may or
@@ -58,7 +58,7 @@ lang:   en
 
 - Most modern CPUs employ a *write-back* cache write policy
     - a changed cache line is updated in the lower level hierarchy only when 
-	  it is evicted
+      it is evicted
 - Upon write miss, the cache line is typically first read from the main memory (*write-allocate* policy)
 - In multicore CPUs with private caches, writes may require updates also in 
   the caches of the other cores
@@ -69,12 +69,12 @@ lang:   en
 - In *fully associate* cache, each of the 512 entries can contain any 
   memory location 
     - Each entry needs to be checked for a hit which can be expensive for 
-	  large caches
+      large caches
 - In *direct mapped* cache, each memory location maps into exactly one
   cache line
     - Part of the cache is not fully utilized if memory addresses are not 
-	  evenly distributed: some cache lines are evicted repeteadly while others 
-	  remain empty
+      evenly distributed: some cache lines are evicted repeteadly while others 
+      remain empty
 - Set associative caches can achieve best of the both worlds: efficient search
   and good utilization
   
@@ -83,11 +83,11 @@ lang:   en
 - A N-way set associative cache is divided into sets with N cache
   lines in each
     - 8-way set associative 32 KiB cache has 64 sets with 8 cache line 
-	  entries per set
+      entries per set
 - A memory address is mapped into any entry within a **set**
     - need to search only over N entries for a hit
-	- better utilization than in a direct mapped cache, but conflict misses
-	  still possible
+    - better utilization than in a direct mapped cache, but conflict misses
+      still possible
 - Fully associative and direct mapped as limiting cases N=$\infty$ and N=1
 
 # Example: 2-way set associative cache
@@ -101,11 +101,11 @@ lang:   en
 - Capacity misses: happens when data the data is evicted due to cache becoming 
   full
     - Can be caused by bad spatial and temporal locality of data in the 
-	  application (inherent or bad implementation)
+      application (inherent or bad implementation)
 - Conflict misses: happens when a set becomes full even when other sets have 
   space
     - Can be caused by particular memory access patterns
-	
+    
 # Optimizing data access {.section}
 
 # Accessing multidimensional arrays
@@ -116,7 +116,7 @@ lang:   en
 - Loops should written such that the *innermost* loop index matches the 
   *contiguous* array index
     - C/C++ uses row major layout, i.e. last index is contiguous
-	- Fortran uses column major layout, i.e. first index is contiguous
+    - Fortran uses column major layout, i.e. first index is contiguous
 
 </div>
 <div class=column>
@@ -194,7 +194,7 @@ for (int j=0; j < N; j++)
 - Occasionally, use of nonconventional ordering or traversal of data is 
   beneficial
     - Colorings, space filling curves, *etc.*
-	
+    
 # Data structures: memory layout
 
 <div class="column">

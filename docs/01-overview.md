@@ -158,11 +158,11 @@ end do
     - Application can contain hundreds of thousands of lines of code,
       but typically a small part of the code (`~`10 %) consumes most
         (`~`90%) of the execution time
-	- “Premature code optimization is the root of all evil”
+    - “Premature code optimization is the root of all evil”
 - Choose test case which represents a real production run
 - Measurements should be carried out on the target platform
     - "Toy" run on laptop may provide only limited information
-	
+    
 # Profiling application
 
 <div class=column>
@@ -170,11 +170,11 @@ end do
     - Can be useful for big picture
 - Performance analysis tools
     - Provide detailed information about the application
-	- Find hot-spots (functions and loops)
-	- Identify causes of less-than-ideal performance
-	- Information about low-level hardware
-	- **Intel VTune**, **AMD uProf**, perf, Tau, Scalasca, PAPI, ...
-	-  <http://www.vi-hps.org/tools/tools.html>
+    - Find hot-spots (functions and loops)
+    - Identify causes of less-than-ideal performance
+    - Information about low-level hardware
+    - **Intel VTune**, **AMD uProf**, perf, Tau, Scalasca, PAPI, ...
+    -  <http://www.vi-hps.org/tools/tools.html>
 </div>
 <div class=column>
 <small>
@@ -256,22 +256,22 @@ end do
 
 - Example: maximum performance of **axpy** `x[i] = a x[i] + y[j]`
     - Two FLOPS (multiply and add) per `i`
-	- Three memory references per `i`
-	- With double precision numbers arithmetic intensity <br>
+    - Three memory references per `i`
+    - With double precision numbers arithmetic intensity <br>
       $I=\frac{\mathrm{FLOPS}}{\mathrm{memory traffic}} =
       \frac{2}{3*8}=0.08$ FLOPS/byte
-	- In Puhti, memory bandwidth is \~200 GB/s, so maximum performance
+    - In Puhti, memory bandwidth is \~200 GB/s, so maximum performance
       is \~16 GFLOPS/s
-	- Theoretical peak performance of Puhti node is \~2600 GFLOPS/s
+    - Theoretical peak performance of Puhti node is \~2600 GFLOPS/s
 
 # How to assess application's performance?
 
 - Example: matrix-matrix multiplication `C[i,j] = C[i,j] + A[i,k] * B[k,j]`
     - $2 N^3$ FLOPS
-	- $3 N^2$ memory references
-	- With double precision numbers arithmetic intensity
+    - $3 N^2$ memory references
+    - With double precision numbers arithmetic intensity
       $I=\frac{2 N}{3}$ FLOPS/byte
-	- With large enough $N$ limited by peak performance
+    - With large enough $N$ limited by peak performance
 
 
 # Roofline model
@@ -308,9 +308,9 @@ $$
 <div class=column>
 - Model does not tell if code can be optimized or not
     - Application 1 may not be *fundamentally* memory bound, but only
-	implemented badly (not using caches efficiently)
-	- Application 2 may not have *fundamentally* prospects for higher
-	performance (performs only additions and not fused multiply adds)
+    implemented badly (not using caches efficiently)
+    - Application 2 may not have *fundamentally* prospects for higher
+    performance (performs only additions and not fused multiply adds)
 - However, can be useful for guiding the optimization work
 </div>
 <div class=column>
@@ -322,12 +322,12 @@ $$
 
 - How to obtain the machine parameters?
     - CPU specs
-	- own microbenchmarks
-	- special tools (Intel tools, Empirical Roofline Tool)
+    - own microbenchmarks
+    - special tools (Intel tools, Empirical Roofline Tool)
 - How to obtain application's GFLOPS/s and arithmetic intensity?
     - Pen and paper and timing measurements
-	- Performance analysis tools and hardware counters
-	- *True* number of memory references can be difficult to obtain
+    - Performance analysis tools and hardware counters
+    - *True* number of memory references can be difficult to obtain
 
 # Take-home messages
 

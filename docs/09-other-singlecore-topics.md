@@ -148,7 +148,7 @@ end do
 do i=1,N  
   do j=1,M
     b = 2 * a(i, j) 
-	c(i,j) = b * b
+    c(i,j) = b * b
   end do
 end do
 ```
@@ -157,9 +157,9 @@ end do
 do j=1,N,2
   do i=1,M
     b1 = 2 * a(i, j)
-	b2 = 2 * a(i, j + 1)
-	c(i, j) = b1*b1
-	c(i, j + 1) = b2*b2
+    b2 = 2 * a(i, j + 1)
+    c(i, j) = b1*b1
+    c(i, j + 1) = b2*b2
   end do
 end do
 
@@ -181,7 +181,7 @@ end do
 - Most compilers have an option for faster mathematics 
   ('`-ffast-math`' for gcc/clang and '`-fp-model fast=2`' for Intel)
     - Important to check that results are valid !
-	  
+      
 # Optimizing mathematical operations
 
 <div class=column>
@@ -189,8 +189,8 @@ end do
   requires higher precision), programmer can make some optimizations by hand
 - Examples:
     - Move division out of the loop
-	- Replace `pow(x, n)` where `n` is small integer with multiplications 
-	  (C/C++)
+    - Replace `pow(x, n)` where `n` is small integer with multiplications 
+      (C/C++)
 </div>
 <div class=column>
 <small>
@@ -234,8 +234,8 @@ double x3 = x*x*x  // instead of pow(x, 3)
 
 - When inlining, compiler replaces a call to function by the function body
     - Reduces function call overhead
-	- If function is called within a loop, may provide additional optimization 
-	  prospects
+    - If function is called within a loop, may provide additional optimization 
+      prospects
 - Compiler uses heuristics to decide if inlining is beneficial
     - Might require "interprocedural optimization" options
 - In C/C++ `inline` keyword is *hint* for the compiler to inline
@@ -248,14 +248,14 @@ double x3 = x*x*x  // instead of pow(x, 3)
 - Intrinsic functions are special functions that the compiler replaces with 
   equivalent CPU instruction
     - "high level assembly"
-	- Often compiler specific
+    - Often compiler specific
 - Examples:
     - Software prefetch: `_mm_prefetch` (C/C++), `mm_prefetch` (Fortran)
-	- Non-temporal stores: `_mm_stream_xxx` (C/C++ only)
-	- AVX instructions
+    - Non-temporal stores: `_mm_stream_xxx` (C/C++ only)
+    - AVX instructions
 - Recommended only in special cases
     - Can make the code non-portable
-	- Can also degragade performance - compiler might know better when to use
+    - Can also degragade performance - compiler might know better when to use
 
 # Summary
 
