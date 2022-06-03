@@ -48,5 +48,6 @@ Lecture slides are found in the [course web page](https://events.prace-ri.eu/eve
 
 ### Threading optimization
 
+ - [NUMA aware memory usage](first-touch)
  - [Simple thread affinity](thread-affinity)
  - [Thread affinity in heat equation](heat)
