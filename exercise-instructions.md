@@ -68,11 +68,6 @@ or
 ```
 ssh -Y training000@mahti.csc.fi
 ```
-However, for smoother operation of graphical user interfaces in
-supercomputers, we recommended using the NoMachine remote
-desktop client. See [tutorial in CSC user
-documentation](https://docs.csc.fi/support/tutorials/nomachine-usage/)
-for installation and usage instructions.
 
 For editing program source files you can use e.g. *nano* editor :
 
@@ -89,6 +84,13 @@ modules with
 module list
 ```
 
+For graphical user interfaces we recommend to use the Puhti Web Interface:
+
+- Go to puhti.csc.fi using a web browser and login using your training user account (same username and password you use when connecting with ssh).
+- Start the [Desktop application](https://docs.csc.fi/computing/webinterface/desktop/)
+- Open Terminal by double clicking the **Host terminal** in the desktop
+
+
 ### Disk areas
 
 All the exercises in the supercomputers should be carried out in the
@@ -97,7 +99,7 @@ queried with the command `csc-workspaces`. As the base directory is
 shared between members of the project, you should create your own
 directory:
 ```
-cd /scratch/project_2000745
+cd /scratch/project_2000745/node_level_optimization_2022
 mkdir -p $USER
 cd $USER
 ```
@@ -132,7 +134,8 @@ course we recommend that you use a **test installation** of the more recent
 Intel OneAPI, which can be activated as:
 ```
 module purge
-source /appl/opt/testing/intel-oneapi/setvars.sh
+module load gcc
+source /appl/opt/oneapihpc-2022.2/setvars.sh
 ```
 (Note that once the latest OneAPI is installed in production
 enviroment this installation will be removed).
@@ -165,16 +168,16 @@ You can get the corresponding command line from the VTune GUI, and
 copy-paste it directly after `srun` in the batch job script.
 
 Once the collection is finished, you can **Open** the results in VTune
-GUI, which can be started with
+GUI, which can be started with (for GUI we recommend to use the 
+[Desktop app](https://docs.csc.fi/computing/webinterface/desktop/) in the Puhti web interface)
 ```
 vtune-gui &
 ```
 For example, the above collection command would create a directory
 `r000ps` (each subsequent collection creates a new directory, you can
-check Slurm output `slurm-xxxxx.out` for the name) under which the
-file `r000ps.vtune` is the one to open. You can also copy the full
-`r000ps` directory into your local laptop, and examine the results
-with VTune GUI there.
+check Slurm output `slurm-xxxxx.out` for the name) which can be opened in the GUI.
+You can also copy the full `r000ps` directory into your local laptop, 
+and examine the results with VTune GUI there.
 
 ### Using Mahti
 
@@ -191,7 +194,8 @@ Intel compiler is currently not supported by CSC in Mahti. There is, however,
  similar **test installation** of Intel OneAPI as in Puhti:
 ```
 module purge
-source /appl/opt/testing/intel-oneapi/setvars.sh
+module load gcc
+source /appl/opt/oneapi2022.1.2/setvars.sh
 ```
 Note that some Intel compiler options produce binaries that cannot be run on AMD CPUs.
 
