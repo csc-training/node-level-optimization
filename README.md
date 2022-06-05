@@ -44,7 +44,9 @@ Lecture slides are found in the [course web page](https://events.prace-ri.eu/eve
 
 ### OpenMP tasks
 
- - [OpenMP tasks](omp-tasks)
+ - [Simple tasking](simple-tasks/)
+ - [Parallelizing Mandelbrot with tasks](mandelbrot/)
+ - [Exercises from Eurofusion tutorial](omp-tasks)
 
 ### Threading optimization
 
