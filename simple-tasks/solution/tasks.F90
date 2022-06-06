@@ -8,7 +8,7 @@ program tasks
   array = 0
   write(*,'(A30, *(I3))') "Array at the beginning", array
 
-!$omp parallel
+!$omp parallel private(tid)
 !$omp single
   tid = omp_get_thread_num()
   write(*,*) "Tasks created by", tid
