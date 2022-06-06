@@ -48,7 +48,7 @@ Lecture slides are found in the [course web page](https://events.prace-ri.eu/eve
  - [Parallelizing Mandelbrot with tasks](mandelbrot/)
  - [Parallel Fibonacci](fibonacci/)
  - [Task dependencies in matrix multiplication](matmul-tasks/)
- - [Exercises from Eurofusion tutorial](omp-tasks)
+ - [(Bonus) Parallel Sudoku](sudoku/)
 
 ### Threading optimization
 
