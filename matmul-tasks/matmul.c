@@ -16,38 +16,8 @@
 #define DUMP_MATRIX 0
 #define DUMP_TASKS  0
 
-void matmul_seq(float * C, float * A, float * B, size_t n) {
-    for (size_t i = 0; i < n; ++i) {
-        for (size_t k = 0; k < n; ++k) {
-            for (size_t j = 0; j < n; ++j) {
-                C[i * n + j] += A[i * n + k] * B[k * n + j];
-            }
-        }
-    }
-}
 
-void matmul_par(float * C, float * A, float * B, size_t n) {
-#pragma omp parallel for schedule(static,8) firstprivate(n)
-    for (size_t i = 0; i < n; ++i) {
-        for (size_t k = 0; k < n; ++k) {
-            for (size_t j = 0; j < n; ++j) {
-                C[i * n + j] += A[i * n + k] * B[k * n + j];
-            }
-        }
-    }
-}
-
-void matmul_tloop(float * C, float * A, float * B, size_t n) {
-    for (size_t i = 0; i < n; ++i) {
-        for (size_t k = 0; k < n; ++k) {
-            for (size_t j = 0; j < n; ++j) {
-                C[i * n + j] += A[i * n + k] * B[k * n + j];
-            }
-        }
-    }
-}
-
-void matmul_task(float * C, float * A, float * B, size_t n) {
+void matmul(float * C, float * A, float * B, size_t n) {
     const size_t bf = 256;
     if (n % bf != 0) {
         printf("Blocking factor does not divide matrix size!\n");
@@ -122,44 +92,13 @@ int main(int argc, char * argv[]) {
 
     init_mat(C, A, B, n);
     ts = omp_get_wtime();
-    matmul_seq(C, A, B, n);
+    matmul(C, A, B, n);
     te = omp_get_wtime();
 #if DUMP_MATRIX
     dump_mat(C, n);
 #endif
-    t_seq = te - ts;
-    printf("Sum of matrix (serial):   %f, wall time %lf, speed-up %.2lf\n",
-           sum_mat(C, n), (te-ts), t_seq / (te-ts));
-
-    init_mat(C, A, B, n);
-    ts = omp_get_wtime();
-    matmul_par(C, A, B, n);
-    te = omp_get_wtime();
-#if DUMP_MATRIX
-    dump_mat(C, n);
-#endif
-    printf("Sum of matrix (parallel): %f, wall time %lf, speed-up %.2lf\n",
-           sum_mat(C, n), (te-ts), t_seq / (te-ts));
-
-    init_mat(C, A, B, n);
-    ts = omp_get_wtime();
-    matmul_tloop(C, A, B, n);
-    te = omp_get_wtime();
-#if DUMP_MATRIX
-    dump_mat(C, n);
-#endif
-    printf("Sum of matrix (taskloop): %f, wall time %lf, speed-up %.2lf\n",
-           sum_mat(C, n), (te-ts), t_seq / (te-ts));
-
-    init_mat(C, A, B, n);
-    ts = omp_get_wtime();
-    matmul_task(C, A, B, n);
-    te = omp_get_wtime();
-#if DUMP_MATRIX
-    dump_mat(C, n);
-#endif
-    printf("Sum of matrix (tasks):    %f, wall time %lf, speed-up %.2lf\n",
-           sum_mat(C, n), (te-ts), t_seq / (te-ts));
+    printf("Sum of matrix:    %f, wall time %lf\n",
+           sum_mat(C, n), (te-ts));
 
     return EXIT_SUCCESS;
 }
