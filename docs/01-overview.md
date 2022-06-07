@@ -273,6 +273,20 @@ end do
       $I=\frac{2 N}{3}$ FLOPS/byte
     - With large enough $N$ limited by peak performance
 
+# How to assess application's parallel performance?
+
+- First step should be always to optimize single core performance
+    - May affect computation / communication balance
+- Maximize single node performance
+    - Dynamic scaling of clock frequency, shared caches etc. make
+      scalability within node complex concept
+    - Example: independent computations in Puhti (no parallel
+      overheads)
+        - Single core: 3.06 s
+        - All the cores: 4.25 - 4.44 s per core
+<!-- Numbers from the affinity_test code --> 
+- Memory bound applications may benefit from undersubscribing the node 
+
 
 # Roofline model
 
