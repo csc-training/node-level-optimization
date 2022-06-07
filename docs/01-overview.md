@@ -221,10 +221,11 @@ end do
 - They enable more accurate statistics and low overhead
     - In some cases they can be used for tracing without any extra 
       instrumentation
-
 - Number of counters is much smaller than the number of events that can be 
   recorded
 - Different CPUs have different counters
+- In multi-user systems like HPC clusters kernel security settings may limit 
+  available counters
 
 # Optimizing program {.section}
 
