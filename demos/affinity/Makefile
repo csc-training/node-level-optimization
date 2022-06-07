@@ -23,7 +23,7 @@ endif
 all: affinity
 
 affinity: affinity_test.c
-	$(CC) -o $(CFLAGS) -o $@  $< $(LDFLAGS)
+	$(CC) $(CFLAGS) -o $@  $< $(LDFLAGS)
 
 clean:
 	rm -f *.o affinity
