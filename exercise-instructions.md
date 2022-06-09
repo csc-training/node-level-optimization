@@ -224,11 +224,10 @@ module load amduprof
 
 When using AMD uprof, the collection of the performance results should be
 done via batch system using the command line mode with the
-`AMDuProfCLi` command. Kernel priviliges required by AMD uprof are available only in the `test` partition
+`AMDuProfCLi` command. Kernel priviliges required by AMD uprof are available only in the "training" reservations.
 
 ```
 #SBATCH ...
-#SBATCH --partition=test
 
 srun AMDuProfCLI collect --config tbp -o $PWD/prof-$SLURM_JOBID ./my_exe
 ```
