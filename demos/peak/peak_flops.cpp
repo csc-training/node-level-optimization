@@ -12,6 +12,10 @@ char kernel_name[4] = "add";
 #define KERNEL mul
 const int flops_per_calc = 1; // Multiply = 1 operation
 char kernel_name[4] = "mul";
+#elif defined KERNEL_DIV
+#define KERNEL div
+const int flops_per_calc = 1; // Multiply = 1 operation
+char kernel_name[4] = "div";
 #else
 #define KERNEL fma
 const int flops_per_calc = 2; // Multiply + add = 2 operations
@@ -19,7 +23,7 @@ char kernel_name[4] = "fma";
 #endif
 
 #ifndef NUM_OPS // Number of operations, affects pipeline thoughput
-#define NUM_OPS 8
+#define NUM_OPS 8 
 #endif
 
 #ifndef VECTOR_WIDTH // Vector width in number of doubles

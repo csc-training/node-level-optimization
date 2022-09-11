@@ -68,3 +68,24 @@ template <int N, typename T> inline void add(T* fa, T* fb, T* fc)
     ADD<N, T>::add(fa, fb, fc);
 }
 
+// Divide
+template<int N, typename T> class DIV {
+  public:
+     static void div(T* fa, T* fb, T* fc) {
+        *fa = (*fa) / (*fb); 
+        DIV<N-1, T>::div(fa + VECTOR_WIDTH, fb, fc);
+      }
+};
+
+template<typename T> class DIV<0,T> {
+  public:
+     static void div(T* fa, T* fb, T* fc) {
+        return;
+     }
+};
+
+template <int N, typename T> inline void div(T* fa, T* fb, T* fc)
+{
+    DIV<N, T>::div(fa, fb, fc);
+}
+
