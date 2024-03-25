@@ -206,7 +206,7 @@ less than one
 
 <div class=column>
 <!-- Image copyright CSC, see LICENSE -->
-![](img/cache-coherency.png){.center width=50%}
+![](img/cache-coherency.svg){.center width=50%}
 </div>
    
 # NUMA architectures
