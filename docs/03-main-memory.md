@@ -37,10 +37,12 @@ lang:   en
 
 # Memory speed - practice
 
-- Latency 
+- Typical memory accees latency: ~80 ns 
 - Concurrency = latency x throughput
-- Single core performance limitations
-- Bus contention when many cores access the memory
+   - In order to achieve a bandwidth of 100 GB/s, over 100 memory requests need to be concurrently on the fly (single request = cache line = 64B)
+   - Single core has can sustain typically only ~10 concurrent memory requests, so single
+     thread can achieve only a farction of peak performance 
+- When many cores access the memory, there is bus contention
     - Highest memory bandwidth is typically achieved with some cores idle
 
 # Non-uniform memory access
@@ -49,7 +51,7 @@ lang:   en
 - A node can have multiple sockets with memory attached to each socket
 - Non Uniform Memory Access (NUMA)
     - All memory within a node is accessible, but latencies and bandwidths vary
-- Hardware needs to maintain cahce coherency also between different NUMA nodes (ccNUMA)
+- Hardware needs to maintain cache coherency also between different NUMA nodes (ccNUMA)
 </div>
 
 <div class=column>
