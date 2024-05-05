@@ -98,7 +98,7 @@ lang:   en
 
 <div class=column>
 - Hardware Instruction Level Parallelism (ILP)
-- Multiple instructions per cycle issued to the multiple execution
+- Multiple instructions per cycle issued to multiple execution
   units
 - Hardware data dependency resolution preserve sequential execution
   semantics
@@ -125,7 +125,7 @@ $$
 $$
 - Example: vector fused multiply add (vfma) in Intel Cascade Laked
     - latency 4 cycles, throughput 2 IPC
-    - minimum of eight independent instructions are needed to achieve maximum throughput
+    - 8 independent instructions are needed to achieve maximum throughput
 
 # Vectorization
 
@@ -228,5 +228,3 @@ $$
     - <https://en.wikichip.org/wiki/WikiChip>
     - <https://uops.info/>
 - Agner's optimization resources <https://www.agner.org/optimize/>
-    
-    
