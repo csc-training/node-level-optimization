@@ -28,8 +28,7 @@ lang:   en
     - Each slot in the array (=byte) has an address
 - In principle, data *i.e.* content of a variable can be stored in any slot
 - The data is said to be **N**-byte aligned if its memory address is integer multiple of **N**
-- Memory is accessed in units of cache lines (typically 64 bytes), with corresponding alignment
- (*i.e.* 64 bytes)
+- In practice, memory is accessed in units of cache lines (typically 64 bytes), with corresponding alignment  (*i.e.* 64 bytes)
 
 # Memory alignment
 
@@ -72,10 +71,10 @@ lang:   en
 
 - Typical memory access latency: ~80 ns 
 - Concurrency = latency x throughput
-   - In order to achieve a bandwidth of 100 GB/s, over 100 memory requests need to be concurrently on the fly (single request = cache line = 64B)
-   - Single core has can sustain typically only ~10 concurrent memory requests, so single
-     thread can achieve only a farction of peak performance 
-- When many cores access the memory, there is bus contention
+    - In order to achieve a bandwidth of 100 GB/s, over 100 memory requests need to be concurrently on the fly (single request = cache line = 64B)
+    - Single core has can sustain typically only ~10 concurrent memory requests, so single
+      thread can achieve only a fraction of peak performance 
+- When many cores access the memory, memory bus may become congested
     - Highest memory bandwidth is typically achieved with some cores idle
 
 # Non-uniform memory access
@@ -84,7 +83,6 @@ lang:   en
 - A node can have multiple sockets with memory attached to each socket
 - Non Uniform Memory Access (NUMA)
     - All memory within a node is accessible, but latencies and bandwidths vary
-- Hardware needs to maintain cache coherency also between different NUMA nodes (ccNUMA)
 </div>
 
 <div class=column>
@@ -105,7 +103,6 @@ lang:   en
   or multi-process applications
 
 # NUMA aware initialization
-
 
 <div class=column>
 - No NUMA awareness
@@ -232,9 +229,9 @@ Process 250546 thread 000 affinity 4-7
   
 # Summary
 
-- TODO
-- Performance of HPC applications is often improved when processes and
-threads are pinned to CPU cores
-- MPI and batch system configurations may affect the affinity
-    - very system dependent, try to always investigate
+- Main memory is typically the slowest component in CPU
+- Maximum memory bandwidth is often achieved by running on subset of available cores
+- First touch memory allocation may have significant performance implications in NUMA 
+  systems
+- Pinning of processes and threads to specific cores may have large impact on performance
 
