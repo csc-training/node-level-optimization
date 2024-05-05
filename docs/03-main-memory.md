@@ -9,22 +9,55 @@ lang:   en
 
 # Memory subsystem
 
+<div class=column style=width:55%>
 - Hierarchy of memories
 - Main memory with non-uniform access (NUMA)
     - "Local" memory (same NUMA domain)
     - "Remote" memory (other NUMA domain)
 - Multiple levels of caches (L1, L2, L3)
 - Main memory is typically the slowest component in modern CPU (neglecting I/O) 
+</div>
+<div class=column style=width:43%>
+<!-- Image copyright CSC, see LICENSE -->
+![](img/numa-schematic.png){.center width=80%}
+</div>
+
+# Memory alignment
+
+- Computer memory can be thought as one dimensional array of bytes
+    - Each slot in the array (=byte) has an address
+- In principle, data *i.e.* content of a variable can be stored in any slot
+- The data is said to be **N**-byte aligned if its memory address is integer multiple of **N**
+- Memory is accessed in units of cache lines (typically 64 bytes), with corresponding alignment
+ (*i.e.* 64 bytes)
+
+# Memory alignment
+
+![](img/alignment.png){.center width=80%}
+<br>
+
+- If data is badly aligned and spans over cache line (*e.g.* 4 byte `float` would have 63 byte
+  alignment) performance may suffer
+- In practice, language standards and compilers force *natural* alignment so that with
+      scalar data bad alignment is rarely an issue
 
 # Memory controller
 
-- TODO kuva here
+<div class=column style=width:60%>
 - Coordinates the transfer of bits between memory DIMMs and the CPU core (via caches)
 - Might be on the same die as CPU (integrated memory controller) or in a separate die
 - Main characteristics
-    - Number of channels (6-12)
-    - Speed / clock frequency (3200 MT/s)
+    - Number of channels (*e.g.* 6)
+    - Speed / clock frequency (*e.g.* 3200 MT/s)
     - Bus width (64 bit) 
+</div>
+<div class=column style=width:38%>
+<!-- Image source https://infohub.delltechnologies.com/en-us/l/memory-population-rules-for-3rd-generation-intel-xeon-scalable-processors-on-poweredge-servers-1/memory-topography-and-terminology/ -->
+![](img/intel-memory-controller.png){.center width=65%}
+<br>
+<!-- Image source https://cdn.wccftech.com/wp-content/uploads/2019/10/AMD-EPYC-Milan-Zen-3-Server-CPU-1480x833.png -->
+![](img/amd-memory-controller.jpg){.center width=65%}
+</div>
 
 # Memory speed - theory
 
@@ -37,7 +70,7 @@ lang:   en
 
 # Memory speed - practice
 
-- Typical memory accees latency: ~80 ns 
+- Typical memory access latency: ~80 ns 
 - Concurrency = latency x throughput
    - In order to achieve a bandwidth of 100 GB/s, over 100 memory requests need to be concurrently on the fly (single request = cache line = 64B)
    - Single core has can sustain typically only ~10 concurrent memory requests, so single
@@ -199,6 +232,7 @@ Process 250546 thread 000 affinity 4-7
   
 # Summary
 
+- TODO
 - Performance of HPC applications is often improved when processes and
 threads are pinned to CPU cores
 - MPI and batch system configurations may affect the affinity

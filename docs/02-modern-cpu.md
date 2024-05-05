@@ -1,7 +1,7 @@
 ---
 title:  A look into modern CPU architecture
 author: CSC Training
-date:   2022-06
+date:   2024-05
 lang:   en
 ---
 
@@ -20,7 +20,7 @@ lang:   en
 <div class=column>
 
 <!--Image copyright By Kapooht - Own work, CC BY-SA 3.0, -->
-![](https://upload.wikimedia.org/wikipedia/commons/e/e5/Von_Neumann_Architecture.svg){.center width=70%}
+![](https://upload.wikimedia.org/wikipedia/commons/e/e5/Von_Neumann_Architecture.svg){.center width=60%}
 
 </div>
 
@@ -36,7 +36,7 @@ lang:   en
 <div class=column>
 
 <!-- Image copyright Public Domain -->
-![](https://en.wikichip.org/w/images/f/f2/zen_2_core_diagram.svg){.center width=50%}
+![](https://en.wikichip.org/w/images/f/f2/zen_2_core_diagram.svg){.center width=45%}
 
 </div>
 
@@ -115,6 +115,17 @@ less than one
 
 </div>
 
+# Latency, throughput, and concurrency
+
+- In order to keep the pipeline full and multiple execution units fully utilized, 
+  there needs to be enough independent instructions that can be run concurrently
+- Little's law
+$$
+\textrm{Concurrency} = \textrm{Latency} \times \textrm{Throughput}
+$$
+- Example: vector fused multiply add (vfma) in Intel Cascade Laked
+    - latency 4 cycles, throughput 2 IPC
+    - minimum of eight independent instructions are needed to achieve maximum throughput
 
 # Vectorization
 
@@ -143,24 +154,6 @@ less than one
 ![](img/memory_hierarchy.svg){.center width=90%}
 </div>
 
-# Memory alignment
-
-- Computer memory can be thought as one dimensional array of bytes
-    - Each slot in the array (=byte) has an address
-- In principle, data *i.e.* content of a variable can be stored in any slot
-- The data is said to be **N**-byte aligned if its memory address is integer multiple of **N**
-- Memory is accessed in units of cache lines (typically 64 bytes), with corresponding alignment 
- (*i.e.* 64 bytes)
-
-# Memory alignment
-
-![](img/alignment.png){.center width=80%}
-<br>
-
-- If data is badly aligned and spans over cache line (*e.g.* 4 byte `float` would have 63 byte 
-  alignment) performance may suffer
-- In practice, language standards and compilers force *natural* alignment so that with 
-      scalar data bad alignment is rarely an issue
   
 # Symmetric Multithreading (SMT)
 
@@ -179,8 +172,6 @@ less than one
 </div>
 
 
-# Introduction to modern multicore CPUs {.section}
-
 # Multicore CPU schematic
 
 <div class=column>
@@ -194,7 +185,6 @@ less than one
 <!-- Image copyright CSC, see LICENSE -->
 ![](img/multicore-schematic.svg){.center width=60%}
 </div>
-
 
 # Cache coherency
 
