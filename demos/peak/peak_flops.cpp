@@ -5,6 +5,10 @@
 #include <math.h>
 #ifdef PAPI
 #include <papi.h>
+#include <string>
+#include <vector>
+#include <iostream>
+#include <sstream>
 #endif
 
 #if defined KERNEL_ADD
@@ -35,7 +39,7 @@ char kernel_name[4] = "fma";
 
 #include "kernels.hpp"
 
-const int n_trials = 1000000000; 
+const int n_trials = 1000000000 / NUM_OPS;
 
 int main() {
 
@@ -51,12 +55,31 @@ int main() {
   PAPI_create_eventset(&eventset);
   PAPI_add_named_event(eventset,"PAPI_TOT_INS");
   PAPI_add_named_event(eventset,"PAPI_TOT_CYC");
+  
+  std::vector<std::string> papi_events;
+  // Measure always total instructions and cycles
+  papi_events.push_back("PAPI_TOT_INS");
+  papi_events.push_back("PAPI_TOT_CYC");
+  if (std::getenv("PAPI_EVENTS") != nullptr) {
+    std::string events_from_env(std::getenv("PAPI_EVENTS"));
+    std::stringstream ss(events_from_env);
+    char delimiter = ',';
+    std::string event_name;
+    while (getline(ss, event_name, delimiter)) { 
+      PAPI_add_named_event(eventset, event_name.c_str());    
+      std::cout << "Adding PAPI event " << event_name << std::endl;
+      papi_events.push_back(event_name); 
+    }
+  } 
+  
+  int num_papi_events = papi_events.size();
 
-  long long values[2];
+  long long *papi_values = new long long[num_papi_events];
 
   PAPI_reset(eventset);
   PAPI_start(eventset);
 #endif
+
   const double t0 = omp_get_wtime(); // start timer
 #pragma omp parallel
   { 
@@ -87,7 +110,8 @@ int main() {
   
   const double t1 = omp_get_wtime();
 #ifdef PAPI
-  PAPI_stop(eventset, values);
+  //PAPI_hl_region_end("computation");
+  PAPI_stop(eventset, papi_values);
 #endif
 
   // Convert everything to doubles for avoiding integer overflows
@@ -98,10 +122,15 @@ int main() {
          kernel_name, NUM_OPS, VECTOR_WIDTH, omp_get_max_threads(), gflops, t1 - t0, gflops/(t1 - t0));
 
 #ifdef PAPI
-  const double ins_per_flop = (double)omp_get_max_threads() * (double) values[0] * 1.0e-9 / gflops;
-  const double cyc_per_flop = (double)omp_get_max_threads() * (double) values[1] * 1.0e-9 / gflops;
-  const double ins_per_cycle = (double) values[0] / (double) values[1];
-  const double clock_freq = 1.0e-9 * (double) values[1] / (t1 - t0);
+  const double ins_per_flop = (double)omp_get_max_threads() * (double) papi_values[0] * 1.0e-9 / gflops;
+  const double cyc_per_flop = (double)omp_get_max_threads() * (double) papi_values[1] * 1.0e-9 / gflops;
+  const double ins_per_cycle = (double) papi_values[0] / (double) papi_values[1];
+  const double clock_freq = 1.0e-9 * (double) papi_values[1] / (t1 - t0);
+  printf("PAPI metrics:\n");
+  for (int i=0; i < num_papi_events; i++) {
+     printf("%12s  %14lld\n", papi_events[i].c_str(), papi_values[i]);
+  }
+  printf("Derived metrics: \n");
   printf("Ins per flop=%.3f, cyc per flop=%.3f, IPC=%.3f, clock freq=%.3f GHz\n",
           ins_per_flop,cyc_per_flop,ins_per_cycle, clock_freq);
 #endif
