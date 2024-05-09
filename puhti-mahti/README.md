@@ -15,6 +15,3 @@ numactl -H
 ```
 Try both login and compute node.
 
-You can try to run the `peak` and `stream` microbenchmarks also in
-Puhti and Mahti, how do the results compare with the specifications?
-

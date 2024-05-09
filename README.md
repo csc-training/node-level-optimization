@@ -16,13 +16,20 @@ Lecture slides from 2022 are [here](https://events.prace-ri.eu/event/1367/).
 
  - [General instructions](exercise-instructions.md)
 
-### Performance limits
-
- - [Performance limits](performance-limits)
-
 ### Getting started with Puhti and Mahti
 
  - [Getting started with CSC supercomputers](puhti-mahti)
+
+### Instruction level parallelism
+
+ - [Instruction level parallelism](instruction-level-parallelism)
+
+### Main memory performance
+
+ - [Stream](stream)
+ - [NUMA aware memory usage](first-touch)
+
+
 
 ### Performance tools
 
@@ -33,7 +40,7 @@ Lecture slides from 2022 are [here](https://events.prace-ri.eu/event/1367/).
 
  - [Improving performance through vectorization](vectorization)
 
-### Memory optimization
+### Cache optimization
 
  - [Loop interchange](loop-interchange)
  - [Cache blocking](cache-blocking)
@@ -43,17 +50,8 @@ Lecture slides from 2022 are [here](https://events.prace-ri.eu/event/1367/).
  - [Fast mathematics](math)
  - [Branch prediction](branch-prediction)
 
-### OpenMP tasks
-
- - [Simple tasking](simple-tasks/)
- - [Parallelizing Mandelbrot with tasks](mandelbrot/)
- - [Parallel Fibonacci](fibonacci/)
- - [Tasks and loops](taskloop/)
- - [Task dependencies in matrix multiplication](matmul-tasks/)
- - [(Bonus) Parallel Sudoku](sudoku/)
 
 ### Threading optimization
 
- - [NUMA aware memory usage](first-touch)
  - [Simple thread affinity](thread-affinity)
  - [Thread affinity in heat equation](heat)
