@@ -10,7 +10,6 @@ lscpu`). Are the CPUs the same?
 
 Investigate the NUMA configuration in Mahti:
 ```
-module load numactl
 numactl -H
 ```
 Try both login and compute node.
