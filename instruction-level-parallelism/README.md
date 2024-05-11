@@ -14,21 +14,33 @@ With a proper `width`, vector instructions can be used.
 The number of independent operations is a compile time constant that is specified in the
 [Makefile](../demos/peak/Makefile) in `NUM_OPS` variable.
 
+
 ## Vectorization
 
+In order to make the illustration of performance topics easier, we focus here only
+on the behaviour of GCC. Other compilers might perform some optimization discussed here
+by default or at lower optimization levels, and we encourage you to investigate later on
+also Intel and Clang compilers.
+
 With the default options in [Makefile](../demos/peak/Makefile), GCC does not vectorize 
-the code.
+the code. Here, you can investigate how enabling vectorization affects performance.
 
 - Compile and run the code first (with a single thread / core) with the default settings.
 - Enable then vectorization by adding the `-fopenmp-simd` option, how does the 
   performance change?
+- Most of the current CPUs have vector units that can perform the fused multiply add 
+  operation in one instruction. However, as that changes the semantics of floating point 
+  arithmetics a bit, and thus GCC does not use by default FMA instructions. Enable 
+  FMA instructions by adding `-mfma` option. How does the performance change?
 - In Puhti, try to use AVX512 instead of the default AVX2 (change `VECTOR_WIDTH` to 8
   and compile with `-mavx512f -mprefer-vector-width=512`). 
 - Try to get compiler optimization report (e.g. by adding `-fopt-info-vec`) both
   with vectorization enabled and disabled.
 - We encourage you to look also into assembly code both with and without vectorization 
   (you can produce `peak_xxx.s` file e.g. with `-S -fverbose-asm`). You can look 
-  e.g. for `xmm`, ´ymm`, and `zmm` registers.
+  e.g. for `xmm`, ´ymm`, and `zmm` registers. As GCC does not inform about the use of FMA
+  instructions in the optimization reports, looking into assembly is often the only way 
+  to find out.
 
 ## Pipelining and register spilling
 
