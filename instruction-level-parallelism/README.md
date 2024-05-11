@@ -38,9 +38,9 @@ the code. Here, you can investigate how enabling vectorization affects performan
   with vectorization enabled and disabled.
 - We encourage you to look also into assembly code both with and without vectorization 
   (you can produce `peak_xxx.s` file e.g. with `-S -fverbose-asm`). You can look 
-  e.g. for `xmm`, ´ymm`, and `zmm` registers. As GCC does not inform about the use of FMA
-  instructions in the optimization reports, looking into assembly is often the only way 
-  to find out.
+  e.g. for `xmm` (SSE), ´ymm` (AVX2), and `zmm` (AVX512) registers. 
+  As GCC does not inform about the use of FMA instructions in the optimization reports, 
+  looking into assembly is often the only way to find out if they are used.
 
 ## Pipelining and register spilling
 
