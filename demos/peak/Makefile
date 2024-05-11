@@ -9,7 +9,7 @@ CC=g++
 # General optimization flags
 OPT=-O2 -ffast-math
 # Vectorization options
-VECOPT=-mavx2 -mfma -fopenmp-simd
+VECOPT=-mavx2 -mfma # -fopenmp-simd
 
 # OpenMP
 OMP=
