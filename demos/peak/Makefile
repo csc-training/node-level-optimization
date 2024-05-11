@@ -7,9 +7,9 @@ VECTOR_WIDTH=4
 
 CC=g++
 # General optimization flags
-OPT=-O2 -ffast-math
+OPT=-O2
 # Vectorization options
-VECOPT=-mavx2 -mfma # -fopenmp-simd
+VECOPT=-mavx2 # -mfma # -fopenmp-simd
 
 # OpenMP
 OMP=
