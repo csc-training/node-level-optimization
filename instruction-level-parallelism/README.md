@@ -1,5 +1,8 @@
 # Simple vectorization and instruction level parallelism
 
+In this exercise you can investigate with a simple microbenchmark how vectorization and instruction
+level parallelism show up in the performance. We suggest you to try here both Mahti and Puhti.
+
 [peak](../demos/peak) is microbenchmark, where one issues independent operations (fused multiply adds, multiplications, or additions). Operands can be kept in registers, so the 
 the code is purely compute bound and can reach close to theoretical peak 
 floating point performance. The code uses C++ template metaprogramming, but in pseudocode the main kernel looks like (for fused multiply add, multiply and add correspondingly):
@@ -23,21 +26,21 @@ by default or at lower optimization levels, and we encourage you to investigate 
 also Intel and Clang compilers.
 
 With the default options in [Makefile](../demos/peak/Makefile), GCC does not vectorize 
-the code. Here, you can investigate how enabling vectorization affects performance.
+the code. Here, you can investigate how enabling vectorization affects performance. 
 
 - Compile and run the code first (with a single thread / core) with the default settings.
 - Enable then vectorization by adding the `-fopenmp-simd` option, how does the 
   performance change?
 - Most of the current CPUs have vector units that can perform the fused multiply add 
-  operation in one instruction. However, as that changes the semantics of floating point 
+  operation in one instruction. However, that changes the semantics of floating point 
   arithmetics a bit, and thus GCC does not use by default FMA instructions. Enable 
   FMA instructions by adding `-mfma` option. How does the performance change?
 - In Puhti, try to use AVX512 instead of the default AVX2 (change `VECTOR_WIDTH` to 8
   and compile with `-mavx512f -mprefer-vector-width=512`). 
 - Try to get compiler optimization report (e.g. by adding `-fopt-info-vec`) both
   with vectorization enabled and disabled.
-- We encourage you to look also into assembly code both with and without vectorization 
-  (you can produce `peak_xxx.s` file e.g. with `-S -fverbose-asm`). You can look 
+- Try to look also into assembly code both with and without vectorization 
+  (you can produce `peak_xxx.s` file with `-S -fverbose-asm`). You can look 
   e.g. for `xmm` (SSE), ´ymm` (AVX2), and `zmm` (AVX512) registers. 
   As GCC does not inform about the use of FMA instructions in the optimization reports, 
   looking into assembly is often the only way to find out if they are used.
@@ -58,7 +61,7 @@ concurrency = latency * throughput
 formula?
 
 - In Mahti, AMD CPU cores have 16 AVX registers, the Intel CPU cores in Puhti 32. With 
-large enough `NUM_OPS`, all operands can no longer be kept in registers. Try to work in
+large enough `NUM_OPS`, all operands can no longer be kept in registers. Try to work out on
 pen and paper how many registers are needed for different operations. What is the 
 critical value for `NUM_OPS`? Investigate what happens to performance when this value is
 exceeded.  
@@ -76,8 +79,8 @@ performance counters during the execution of a program. Available counters depen
 the underlying hardware, and can be seen with `perf list`.
 
 - Repeat some of the previous tests with `perf` and try to get further understanding
-  of the code by looking proper counters. As an example, number of instructions and 
-  cycles (number of instructions per cycle, IPC) can be seen with
+  by looking into proper counters. As an example, number of instructions and 
+  cycles (and also number of instructions per cycle, IPC) can be seen with
 ```
 srun ... perf stat -e instructions,cycles ./peak_fma
 ```
