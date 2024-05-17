@@ -1,7 +1,7 @@
 ---
-title:  Introduction to Application Performance
-author: CSC Training
-date:   2022-06
+title:  Overview of performance engineering
+event:  Node-level Performance Optimization @ CSC
+date:   2024-05
 lang:   en
 ---
 
@@ -9,7 +9,7 @@ lang:   en
 # Course outline
 
 - Analyzing and understanding performance issues
-    - Awareness of modern CPUs
+    - awareness of modern CPUs
 - Improving performance through vectorization
 - Improving performance through memory optimization
 - Improving performance though advanced threading techniques
@@ -18,12 +18,13 @@ lang:   en
 # Why worry about application performance?
 
 - Obvious benefits
-    - Better throughput => more science
-    - Cheaper than new hardware 
-    - Save energy, compute quota, money etc.
+    - better throughput ⇒ more science
+    - cheaper than new hardware
+    - save energy, compute quota, money etc.
 - ...and some non-obvious ones
-    - Potential cross-disciplinary research with computer science
-    - Deeper understanding of application
+    - potential cross-disciplinary research with computer science
+    - deeper understanding of application
+
 
 # Factors affecting performance in HPC
 
@@ -33,22 +34,17 @@ lang:   en
 - Communication between nodes
 - Input/output to disk
 
+
 # How to improve single node performance?
 
-<div class=column>
+<div class=column style="width:52%">
 - Choose good algorithm
     - e.g. $O(N \mathrm{log} N)$ vs. $O(N^2)$
-    - remember prefactor!
-- Use high performance libraries
+    - remember also the prefactor!
+- Use high-performance libraries
     - linear algebra (BLAS/LAPACK), FFTs, ...
-- Experiment with compilers and compiler options
-    - There is no single best compiler and set of options for all use
-      cases
-- Experiment with threading options
-    - Thread pinning, loop scheduling, ...
-- Optimize the program code
 </div>
-<div class=column>
+<div class=column style="width:46%">
 ```bash
 ./fibonacci 20
 With loop, Fibonacci number i=20 is 6765
@@ -56,33 +52,63 @@ Time elapsed 79 ums
 With recursion, Fibonacci number i=20 is 6765
 Time elapsed 343773 ums
 ```
-<br>
-<!-- Copyright CSC -->
-![](img/optimal_performance.png){.center width=80%}
-
 </div>
+
+- Experiment with compilers and compiler options
+    - there is no single best compiler nor a set of options for all use
+      cases
+- Experiment with threading options
+    - thread pinning, loop scheduling, ...
+- Optimize the program code
+
+
+# How to improve single node performance?
+
+<div class=column style="width:52%">
+- Choose good algorithm
+    - e.g. $O(N \mathrm{log} N)$ vs. $O(N^2)$
+    - remember also the prefactor!
+- Use high-performance libraries
+    - linear algebra (BLAS/LAPACK), FFTs, ...
+</div>
+<div class=column style="width:46%">
+<!-- Copyright CSC -->
+![](img/optimal_performance.png){.center width=60%}
+</div>
+
+- Experiment with compilers and compiler options
+    - there is no single best compiler nor a set of options for all use
+      cases
+- Experiment with threading options
+    - thread pinning, loop scheduling, ...
+- Optimize the program code
+
 
 # Doesn't the compiler do everything?
 
 - You can make a big difference to code performance with how you
   express things
-- Helping the compiler spot optimisation opportunities
-- Using the insight of your application 
+  - <span style="color:var(--csc-blue)">Help the compiler</span>
+    spot optimisation opportunities
+  - <span style="color:var(--csc-blue)">Use your insight</span>
+    of the application
     - language semantics might limit compiler
-- Removing obscure (and obsolescent) “optimizations” in older code
-    - Simple code is the best, until otherwise proven
+  - <span style="color:var(--csc-blue)">Remove obscure</span>
+    (and most likely obsolete) "optimizations" in older code
+    - simple code is the best, until otherwise proven
 - This is a dark art, mostly: optimize on case-by-case basis
-    - First, check what the compiler is already doing
+    - first, check what the compiler is already doing
+
 
 # What the compiler is doing? {.table-colour}
 
 <div class=column>
 - Compilers have vast amount of heuristics for optimizing common
-  programming patters
-- Most compilers can provide a report about optimizations performed,
-  with various amount of detail
-    - See compiler manuals for all options
-- Look into assembly code with 
+  code patterns
+- Most compilers can provide a report of the optimizations they performed,
+  with various levels of detail
+    - see compiler manuals for all options
+- Look into the assembly code with
   <br> `-S -fverbose-asm`
 
 </div>
@@ -99,46 +125,49 @@ Time elapsed 343773 ums
 ```
 ...
   vfmadd213pd %ymm0, %ymm2, %ymm10
-  vfmadd213pd %ymm0, %ymm2, %ymm9 
-  vfmadd213pd %ymm0, %ymm2, %ymm8 
+  vfmadd213pd %ymm0, %ymm2, %ymm9
+  vfmadd213pd %ymm0, %ymm2, %ymm8
 ...
 ```
 </div>
 
+
 # Measuring performance {.section}
 
-# A day in life at CSC
-
-<div class=column>
-**CSC customer**
-<br>
-<small>
-I’m performing simulations with my Fortran code. It seems to perform much worse
-with MKL library in the new system than with IMSL library in the old system.
-<br>
-<br>
-No
-</small>
-</div>
-
-<div class=column>
-**CSC specialist**
-<br>
-<br>
-<br>
-<br>
-<small>
-Have you profiled your code?  
-</small>
-</div>
 
 # A day in life at CSC
 
-- Profiled the code: 99.9% of the execution time was being spent on these lines:
+<div class=column>
+## CSC customer
+- I’m running simulations with my Fortran code. It seems to perform much worse
+  with the MKL library in the new system than with the IMSL library in the old
+  system.
+
+<br>
+
+- No
+</div>
+
+<div class=column>
+## CSC specialist
+<br>
+<br>
+<br>
+<br>
+<br>
+
+- Have you profiled your code?
+</div>
+
+
+# A day in life at CSC
+
+- Profiled the code: 99.9% of the execution time was being spent on these
+  lines:
 
 ```fortran
-do i=1,n          ! Removing these unnecessary loop iterations reduced the 
- do j=1,m         ! wall-time of one simulation run from 17 hours to 3 seconds…
+do i=1,n          ! Removing these unnecessary loop iterations reduced the
+  do j=1,m        ! wall-time of one simulation run from 17 hours to 3 seconds…
     do k=1,fact(x)
       do o=1,nchoosek(x)
          where (ranktypes(:,:)==k)
@@ -155,77 +184,95 @@ end do
 
 - First step should always be measuring the performance and finding
   performance critical parts
-    - Application can contain hundreds of thousands of lines of code,
+    - application can contain hundreds of thousands of lines of code,
       but typically a small part of the code (`~`10 %) consumes most
         (`~`90%) of the execution time
-    - “Premature code optimization is the root of all evil”
+    - "Premature code optimization is the root of all evil!"
 - Choose test case which represents a real production run
 - Measurements should be carried out on the target platform
-    - "Toy" run on laptop may provide only limited information
-    
+    - "toy" run on laptop may provide only limited information
+
+
 # Profiling application
 
-<div class=column>
+<div class=column style="width:54%">
 - Applications own timing information
-    - Can be useful for big picture
+    - can be useful for big picture
 - Performance analysis tools
-    - Provide detailed information about the application
-    - Find hot-spots (functions and loops)
-    - Identify causes of less-than-ideal performance
-    - Information about low-level hardware
+    - provide detailed information about the application
+    - find hot-spots (functions and loops)
+    - identify causes of less-than-ideal performance
+    - information about low-level hardware
     - **Intel VTune**, **AMD uProf**, perf, Tau, Scalasca, PAPI, ...
-    -  <http://www.vi-hps.org/tools/tools.html>
+    - <http://www.vi-hps.org/tools/tools.html>
 </div>
-<div class=column>
-<small>
 
+<div class=column style="width:44%">
+<div style="font-size:0.7em">
 ```bash
- Orthonormalize:                    54.219     0.003   0.0% |
-  calc_s_matrix:                    11.150    11.150   2.8% ||
-  inverse-cholesky:                  5.786     5.786   1.5% ||
-  projections:                      18.136    18.136   4.6% |-|
-  rotate_psi_s:                     19.144    19.144   4.8% |-|
- RMM-DIIS:                         229.947    29.370   7.4% |--|
-  Apply hamiltonian:                 9.861     9.861   2.5% ||
+ Orthonormalize:                54.219     0.003   0.0% |
+  calc_s_matrix:                11.150    11.150   2.8% ||
+  inverse-cholesky:              5.786     5.786   1.5% ||
+  projections:                  18.136    18.136   4.6% |-|
+  rotate_psi_s:                 19.144    19.144   4.8% |-|
+ RMM-DIIS:                     229.947    29.370   7.4% |--|
+  Apply hamiltonian:             9.861     9.861   2.5% ||
 ```
-</small>
+</div>
 
 <!-- Copyright CSC -->
 ![](img/vtune-shot.png)
-
 </div>
+
 
 # Profiling application
 
-- Collecting all possible performance metrics with single run is not practical
-    - Simply too much information
-    - Profiling overhead can alter application behavior
+- Collecting all possible performance metrics with a single run is not
+  practical
+    - simply too much information
+    - profiling overhead can alter application behavior
 - Start with an overview!
-    - Call tree information, what routines are most expensive?
+    - call tree information, what routines are most expensive?
+
 
 # Sampling vs. tracing
 
-- When application is profiled using sampling, the execution is stopped at 
-  predetermined intervals and the state of the application is examined
-    - Lightweight, but may give skewed results
+- Sampling stops the execution at predetermined intervals and examines the
+  state of the application at those points
+    - lightweight, but may give skewed results
 - Tracing records every event, e.g. function call
-    - Usually requires modification to the executable
-        - These modifications are called instrumentation
-    - More accurate, but may affect program behavior
-    - Generates lots of data
+    - usually requires modification to the executable
+        - these modifications are called instrumentation
+    - more accurate, but may affect program behavior
+    - generates lots of data
+
 
 # Hardware performance counters
 
-- Hardware performance counters are special registers on CPU that count 
+- Hardware performance counters are special registers on CPU that count
   hardware events
 - They enable more accurate statistics and low overhead
-    - In some cases they can be used for tracing without any extra 
+    - in some cases they can be used for tracing without any extra
       instrumentation
-- Number of counters is much smaller than the number of events that can be 
+- Number of counters is much smaller than the number of events that can be
   recorded
 - Different CPUs have different counters
-- In multi-user systems like HPC clusters kernel security settings may limit 
+- In multi-user systems like HPC clusters kernel security settings may limit
   available counters
+
+
+# PAPI
+
+- Performance Application Programming Interface (PAPI) offers portable
+  access to hardware counters found on most modern processors
+- Consistent interface and methodology for collecting performance counter
+  information
+- Support for most major CPUs and GPUs
+- Several performance analysis tools use PAPI underneath
+    - API for collecting metrics within application
+- Command line tools for investigating available counters *etc.*
+    - `papi_avail`, `papi_native_avail`, `papi_mem_info`, ...
+
 
 # Optimizing program {.section}
 
@@ -234,17 +281,18 @@ end do
 <!-- Copyright CSC -->
 ![](img/perf-analysis-single-node.png){.center width=60%}
 
+
 # How to assess application's performance?
 
 <div class=column>
-- Two fundamental limits
-- CPU's peak floating point performance
+- Two fundamental limits:
+  - CPU's peak floating point performance
     - clock frequency
     - number of instructions per clock cycle
     - number of FLOPS per instruction
     - number of cores
-    - no real application achieves peak in sustained operation
-- Main memory bandwidth
+    - *no real application achieves peak in sustained operation!*
+  - main memory bandwidth
     - How fast data can be fed to the CPU
 </div>
 
@@ -253,85 +301,97 @@ end do
 ![](img/cpu-memory.png){.center width=50%}
 </div>
 
+
 # How to assess application's performance?
 
-- Example: maximum performance of **axpy** `x[i] = a x[i] + y[j]`
-    - Two FLOPS (multiply and add) per `i`
-    - Three memory references per `i`
-    - With double precision numbers arithmetic intensity <br>
+- Example: vector summation (*axpy*)<br>
+  <span style="color:var(--csc-blue); padding-left:8.6ex">
+  `x[i] = ax[i] + y[j]`
+  </span>
+    - two FLOPS (multiply and add) per `i`
+    - three memory references per `i`
+    - with double precision numbers (8 bytes), arithmetic intensity is <br>
       $I=\frac{\mathrm{FLOPS}}{\mathrm{memory traffic}} =
-      \frac{2}{3*8}=0.08$ FLOPS/byte
-    - In Puhti, memory bandwidth is \~200 GB/s, so maximum performance
-      is \~16 GFLOPS/s
-    - Theoretical peak performance of Puhti node is \~2600 GFLOPS/s
+      \frac{2}{3 \cdot 8} = 0.08$ FLOPS/byte
+    - in Puhti, memory bandwidth is \~200 GB/s, so the
+      **maximum performance** is \~16 GFLOPS/s
+    - for comparison, the theoretical peak performance of a Puhti node is
+      \~2600 GFLOPS/s
+
 
 # How to assess application's performance?
 
-- Example: matrix-matrix multiplication `C[i,j] = C[i,j] + A[i,k] * B[k,j]`
+- Example: matrix-matrix multiplication (NxN matrices)<br>
+  <span style="color:var(--csc-blue); padding-left:8.6ex">
+  `C[i,j] = C[i,j] + A[i,k] * B[k,j]`
+  </span>
     - $2 N^3$ FLOPS
     - $3 N^2$ memory references
-    - With double precision numbers arithmetic intensity
+    - with double precision numbers, arithmetic intensity is
       $I=\frac{2 N}{3}$ FLOPS/byte
-    - With large enough $N$ limited by peak performance
+    - with large enough $N$, it is limited by peak performance
+      - on Puhti, this limit is reached with $N \approx 3.9 \cdot 10^{12}$
+
 
 # How to assess application's parallel performance?
 
-- First step should be always to optimize single core performance
-    - May affect computation / communication balance
+- First step should always be to optimize single core performance
+    - may affect computation / communication balance
 - Maximize single node performance
-    - Dynamic scaling of clock frequency, shared caches etc. make
-      scalability within node complex concept
-    - Example: independent computations in Puhti (no parallel
+    - dynamic scaling of clock frequency, shared caches etc. make
+      scalability within a node a complex concept
+    - example: independent computations in Puhti (no parallel
       overheads)
-        - Single core: 3.06 s
-        - All the cores: 4.25 - 4.44 s per core
-<!-- Numbers from the affinity_test code --> 
-- Memory bound applications may benefit from undersubscribing the node 
+        - single core: 3.06 s
+        - all of the cores: 4.25 - 4.44 s per core
+<!-- Numbers from the affinity_test code -->
+- Memory bound applications may benefit from undersubscribing the node
 
 
 # Roofline model
 
-<div class=column>
-- Simple visual concept for maximum achievable performance
-    - can be derived in terms of arithmetic intensity $I$, peak performance
+<div class=column style="width:52%">
+- simple visual concept for maximum achievable performance
+    - can be derived in terms of arithmetic intensity $i$, peak performance
       $\pi$ and peak memory bandwidth $\beta$
 $$
-P = min \begin{cases}
+p = min \begin{cases}
 \pi \\
-\beta \times I
+\beta \times i
 \end{cases}
 $$
-
-- Machine balance = arithmetic intensity needed for peak performance
-    - Typical values 5-15 FLOPS/byte
-- Additional ceilings can be included (caches, vectorization,
-  threading)
-
+- machine balance = arithmetic intensity needed for peak performance
+    - typical values 5-15 flops/byte
 </div>
-<div class=column>
-<!-- Copyright CSC -->
-![](img/simple-roofline.png){.center width=90%}
+
+<div class=column style="width:46%">
+<!-- copyright csc -->
+![](img/simple-roofline.png){.center width=100%}
 <br>
-<!-- https://crd.lbl.gov/departments/computer-science/par/research/roofline/introduction/ -->
-![](img/arithmetic-intensity.png){.center width=70%}
 
-
+- additional ceilings can be included (caches, vectorization,
+  threading)
 </div>
+
 
 # Roofline model
 
 <div class=column>
-- Model does not tell if code can be optimized or not
-    - Application 1 may not be *fundamentally* memory bound, but only
+- Model does not tell if a code can be optimized or not
+    - App 1 may not be *fundamentally* memory bound, but only
     implemented badly (not using caches efficiently)
-    - Application 2 may not have *fundamentally* prospects for higher
+    - App 2 may *inherently* have no prospects for higher
     performance (performs only additions and not fused multiply adds)
-- However, can be useful for guiding the optimization work
+- However, a roofline can be useful for guiding the optimization work
 </div>
 <div class=column>
 <!-- Copyright CSC -->
-![](img/ceilings-roofline.png){.center width=90%}
+![](img/ceilings-roofline.png){.center width=85%}
+<br>
+<!-- https://crd.lbl.gov/departments/computer-science/par/research/roofline/introduction/ -->
+![](img/arithmetic-intensity.png){.center width=75%}
 </div>
+
 
 # Roofline model
 
@@ -340,26 +400,28 @@ $$
     - own microbenchmarks
     - special tools (Intel tools, Empirical Roofline Tool)
 - How to obtain application's GFLOPS/s and arithmetic intensity?
-    - Pen and paper and timing measurements
-    - Performance analysis tools and hardware counters
-    - *True* number of memory references can be difficult to obtain
+    - pen and paper and timing measurements
+    - performance analysis tools and hardware counters
+    - *true* number of memory references can be difficult to obtain
+
 
 # Take-home messages
 
-- Mind the application performance: it is for the benefit of you,
-  other users and the service provider
-- Profile the code and identify the performance issues first, before
+- Mind the application performance: it is beneficial not only for you,
+  but also to other users and the service provider
+- Profile your code and identify its performance issues first, before
   optimizing anything
-    - “Premature code optimization is the root of all evil”
-- Optimizing the code should be the last step in performance tuning
+    - **"Premature code optimization is the root of all evil"**
+- Modifying the code should be the last step in performance tuning
 - Serial optimization is mostly about helping the compiler to optimize
   for the target CPU
-- Roofline model can work as a guide in optimization
+- Roofline model can work as a guide for optimization
+
 
 # Web resources
 
 - Roofline performance model and Empiral Roofline Tool
-    - <https://crd.lbl.gov/departments/computer-science/par/research/roofline/>
+    - <https://crd.lbl.gov/divisions/amcr/computer-science-amcr/par/research/roofline/>
 - Web service for looking assembly output from multitude of compilers
     - <https://gcc.godbolt.org>
 
