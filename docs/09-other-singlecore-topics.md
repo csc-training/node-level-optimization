@@ -30,7 +30,7 @@ lang:   en
 
 # Loop unrolling
 
-<div class=column>
+<div class=column style=width:55%>
 - If the loop body is very small, overhead from incrementing the loop counter
   and from the test for the end of the loop can be high
 - When vectorizing, loop is implicitly unrolled by the vector length
@@ -39,7 +39,7 @@ lang:   en
 - May increase register pressure
 
 </div>
-<div class=column>
+<div class=column style=width:43%>
 ```fortran
 do i=1,N
   c[i] = a[i] + b[i]
@@ -179,7 +179,7 @@ end do
   precision
     - In some applications it is possible to compromise precision for speed
 - Most compilers have an option for faster mathematics 
-  ('`-ffast-math`' for gcc/clang and '`-fp-model fast=2`' for Intel)
+  ("`-ffast-math`" for gcc/clang and "`-fp-model fast=2`" for Intel)
     - Important to check that results are valid !
       
 # Optimizing mathematical operations
@@ -239,9 +239,9 @@ double x3 = x*x*x  // instead of pow(x, 3)
 - Compiler uses heuristics to decide if inlining is beneficial
     - Might require "interprocedural optimization" options
 - In C/C++ `inline` keyword is *hint* for the compiler to inline
-- In Fortran, programmer can force inlining only via compiler directives, 
-  otherwise compiler makes the decision whether to inline a function 
+- In Fortran, programmer can force inlining only via compiler directives 
 - Overuse of inlining increases the executable size and may hurt performance
+
   
 # Intrinsic functions
 
@@ -255,7 +255,7 @@ double x3 = x*x*x  // instead of pow(x, 3)
     - AVX instructions
 - Recommended only in special cases
     - Can make the code non-portable
-    - Can also degragade performance - compiler might know better when to use
+    - Can also degragade performance 
 
 # Summary
 

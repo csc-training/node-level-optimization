@@ -9,7 +9,7 @@ lang:   en
 
 # von Neumann architecture
 
-<div class=column>
+<div class=column style=width:55%>
 - A CPU core is still largely based on the von Neumann model
     - sequency of operations (instructions) performed on given data
     - instructions and data are fetched from memory into registers in CPU
@@ -17,23 +17,23 @@ lang:   en
     - Result is stored back to memory
 - From an external point of view, operations are executed sequentially
 </div>
-<div class=column>
+<div class=column style=width:43%>
 
 <!--Image copyright By Kapooht - Own work, CC BY-SA 3.0, -->
-![](https://upload.wikimedia.org/wikipedia/commons/e/e5/Von_Neumann_Architecture.svg){.center width=60%}
+![](https://upload.wikimedia.org/wikipedia/commons/e/e5/Von_Neumann_Architecture.svg){.center width=90%}
 
 </div>
 
 
 # Modern CPU core
 
-<div class=column>
+<div class=column style=width:55%>
 - Internally, each core is highly complex
 - **Superscalar out-of-order** instruction execution
 - **SIMD** instructions
 - Multiple levels of hierarchical **cache memory**
 </div>
-<div class=column>
+<div class=column style=width:43%>
 
 <!-- Image copyright Public Domain -->
 ![](https://en.wikichip.org/w/images/f/f2/zen_2_core_diagram.svg){.center width=45%}
@@ -53,7 +53,7 @@ lang:   en
 
 # Fetch-decode-execute cycle
 
-<div class=column>
+<div class=column style=width:55%>
 - Instructions are executed in stages
 - Fetch (F): control unit fetches instruction from memory
 - Decode (D): decode the instruction and determine operands
@@ -62,7 +62,7 @@ lang:   en
     - Utilize ALU or access memory
 - Enables simpler logic and **pipelining** the operations
 </div>
-<div class=column>
+<div class=column style=width:43%>
 
 ![](img/front-vs-backend.png){.center width=50%}
 </div>
@@ -91,12 +91,13 @@ lang:   en
 </div>
 
 <div class=column>
-![](https://simplecore-ger.intel.com/techdecoded/wp-content/uploads/sites/11/figure-2-3.png){.center width=70%}
+<!--image origin https://simplecore-ger.intel.com/techdecoded/wp-content/uploads/sites/11/figure-2-3.png -->
+![](img/pipeline-intel.png){.center width=85%}
 </div>
 
 # Superscalar execution
 
-<div class=column>
+<div class=column style=width:60%>
 - Hardware Instruction Level Parallelism (ILP)
 - Multiple instructions per cycle issued to multiple execution
   units
@@ -108,10 +109,10 @@ less than one
 
 </div>
 
-<div class=column>
+<div class=column style=width:32%>
 
 <!-- Image copyright CSC, see LICENSE -->
-![](img/ilp.svg){.center width=60%}
+![](img/ilp.svg){.center width=80%}
 
 </div>
 
@@ -123,7 +124,7 @@ less than one
 $$
 \textrm{Concurrency} = \textrm{Latency} \times \textrm{Throughput}
 $$
-- Example: vector fused multiply add (vfma) in Intel Cascade Laked
+- Example: vector fused multiply add (vfma) in Intel Cascade Lake
     - latency 4 cycles, throughput 2 IPC
     - 8 independent instructions are needed to achieve maximum throughput
 
@@ -135,13 +136,12 @@ $$
 - AVX512 512 bits = 8 double precision numbers
     - single AVX512 fused multiply add instruction can perform 16 FLOPS
 
-<br>
 <!-- Image copyright CSC, see LICENSE -->
 ![](img/simd.svg){.center width=70%}
   
 # Cache memory
 
-<div class=column>
+<div class=column style=width:55%>
 - In order to alleviate the memory bandwidth bottleneck, CPUs have multiple levels of cache memory
     - when data is accessed, it will be first fetched into cache
     - when data is reused, subsequent access is much faster
@@ -149,7 +149,7 @@ $$
 - Each successive level has higher capacity but slower access
 </div>
 
-<div class=column>
+<div class=column style=width:43%>
 <!-- Image copyright CSC, see LICENSE -->
 ![](img/memory_hierarchy.svg){.center width=90%}
 </div>
@@ -157,7 +157,7 @@ $$
   
 # Symmetric Multithreading (SMT)
 
-<div class=column>
+<div class=column style=width:55%>
 - It is difficult to fill-in all the available hardware resources in a 
   CPU core
     - Pipeline stalls due to main memory latency, I/O, etc.
@@ -166,7 +166,7 @@ $$
 - Benefits depend on the application, and SMT can also worsen the performance
 </div>
   
-<div class=column>
+<div class=column style=width:43%>
 <!-- Image copyright CSC, see LICENSE -->
 ![](img/smt.svg){.center width=70%}
 </div>
