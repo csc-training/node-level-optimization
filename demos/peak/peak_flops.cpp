@@ -74,9 +74,12 @@ int main() {
     char delimiter = ',';
     std::string event_name;
     while (getline(ss, event_name, delimiter)) { 
-      PAPI_add_named_event(eventset, event_name.c_str());    
-      std::cout << "Adding PAPI event " << event_name << std::endl;
-      papi_events.push_back(event_name); 
+      if (PAPI_add_named_event(eventset, event_name.c_str()) != PAPI_OK) {
+        std::cout << "Adding PAPI event " << event_name << " failed" << std::endl;
+      } else {
+        std::cout << "Adding PAPI event " << event_name << std::endl;
+        papi_events.push_back(event_name);
+      }
     }
   } 
   
