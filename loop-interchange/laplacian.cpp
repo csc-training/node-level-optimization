@@ -25,7 +25,7 @@ int main()
   double y;
   for (int i = 0; i < nx; i++)
     {
-      y = 0.0; 
+      y = 0.0;
       for (int j = 0; j < ny; j++)
         {
           A[i][j] = x*x + y*y;
@@ -42,7 +42,7 @@ int main()
     for (int j = 1; j < ny-1; j++)
       for (int i = 1; i < nx-1; i++)
         L[i][j] = (A[i-1][j] - 2.0*A[i][j] + A[i+1][j]) / (dx*dx) +
-	           (A[i][j-1] - 2.0*A[i][j] + A[i][j+1]) / (dy*dy);
+                  (A[i][j-1] - 2.0*A[i][j] + A[i][j+1]) / (dy*dy);
 
   double t1 = omp_get_wtime();
 

@@ -19,7 +19,7 @@ program laplacian
   ! Grid spacing
   dx = 1.0/real(nx-1)
   dy = 1.0/real(ny-1)
-  ! TODO: allocate matrices
+  ! allocate matrices
   allocate (A(nx, ny), L(nx, ny))
 
   ! initialize array A(x,y) = (x^2 + y^2) in the domain [0:1,0:1]
@@ -40,7 +40,7 @@ program laplacian
   do i = 2, nx-1
      do j = 2, ny-1
         L(i,j) = (A(i-1,j) - 2.0*A(i,j) + A(i+1,j)) / dx**2 + &
-             (A(i,j-1) - 2.0*A(i,j) + A(i,j+1)) / dy**2
+                 (A(i,j-1) - 2.0*A(i,j) + A(i,j+1)) / dy**2
      end do
   end do
   end do
