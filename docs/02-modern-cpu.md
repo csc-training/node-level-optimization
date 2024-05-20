@@ -7,6 +7,12 @@ lang:   en
 
 # Modern CPU core {.section}
 
+# Learning objectives
+
+- Be familiar with the structure of CPU core
+- Understand concepts of instruction level paralllism and vectorization
+- Identify memory hierarchies
+
 # von Neumann architecture
 
 <div class=column style=width:55%>

@@ -7,6 +7,12 @@ lang:   en
 
 # Main memory {.section}
 
+# Learning objectives
+
+- Know how to estimate theoretical memory bandwidth
+- Be able to avoid performance issues from first touch memory allocation
+- Control thread affinity
+
 # Memory subsystem
 
 <div class=column style=width:55%>

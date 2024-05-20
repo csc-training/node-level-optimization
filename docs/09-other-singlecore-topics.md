@@ -13,6 +13,12 @@ lang:   en
 - Function inlining
 - Intrinsic functions
 
+# Learning objectives
+
+- Identity various loop transformations
+- Be aware of performance differences of mathematical operations
+- Recocgnize performance issues of branching
+
 # Loop transformations {.section}
 
 # Loop transformations
