@@ -21,7 +21,7 @@ The number of independent operations is a compile time constant that is specifie
 ## Vectorization
 
 In order to make the illustration of performance topics easier, we focus here only
-on the behaviour of GCC. Other compilers might perform some optimization discussed here
+on the behaviour of GCC with very basic compiler options. Other compilers might perform some optimization discussed here
 by default or at lower optimization levels, and we encourage you to investigate later on
 also Intel and Clang compilers.
 
@@ -33,7 +33,7 @@ the code. Here, you can investigate how enabling vectorization affects performan
   performance change?
 - Most of the current CPUs have vector units that can perform the fused multiply add 
   operation in one instruction. However, that changes the semantics of floating point 
-  arithmetics a bit, and thus GCC does not use by default FMA instructions. Enable 
+  arithmetics a bit, and thus GCC does not use FMA instructions with the given options. Enable 
   FMA instructions by adding `-mfma` option. How does the performance change?
 - In Puhti, try to use AVX512 instead of the default AVX2 (change `VECTOR_WIDTH` to 8
   and compile with `-mavx512f -mprefer-vector-width=512`). 
