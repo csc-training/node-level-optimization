@@ -8,7 +8,8 @@
 
 using Clock = std::chrono::high_resolution_clock;
 
-template <class T> void matmul(const Matrix<T> &a, const Matrix<T> &b, Matrix<T> &c)
+template <class T> void matmul(const Matrix<T> &a, const Matrix<T> &b,
+                               Matrix<T> &c)
 {
   int N = a.nx;
   // Matrix for the transpose of b
@@ -36,37 +37,38 @@ template <class T> void matmul(const Matrix<T> &a, const Matrix<T> &b, Matrix<T>
   for (int bi=0 ;bi < num_blocks; bi++) {
     for (int bj=0; bj < num_blocks; bj++) {
       for (int bk=0; bk < num_blocks; bk++) {
-	// loop within blocks
-	for (int i=0; i < block; i++) {
-	  for (int j=0; j < block; j++) {
-	    for (int k=0; k < block; k++) {
-	      c(i + bi*block, j + bj*block) += a(i + bi*block, k + bk*block) * 
+        // loop within blocks
+        for (int i=0; i < block; i++) {
+          for (int j=0; j < block; j++) {
+            for (int k=0; k < block; k++) {
+              c(i + bi*block, j + bj*block) += a(i + bi*block, k + bk*block) *
                                                t(j + bj*block, k + bk*block);
-	    }
-	  }
-	}
+            }
+          }
+        }
       }
     }
   }
 }
 
-int main(int argc, char *argv[]){
-  
+
+int main(int argc, char *argv[])
+{
     int maxiter, N;
-  
+
     if (argc==3) {
       maxiter = std::atoi(argv[1]);
       N = std::atoi(argv[2]);
     }
     else {
       std::cout << "usage: ./matmul number-of-iterations array-size"
-		<< std::endl;
+        << std::endl;
       exit(0);
     }
 
     if (N % BLOCK != 0) {
-      std::cout << "N must be evenly dividible by BLOCK: N=" << N 
-		<< " BLOCK=" << BLOCK << std::endl;
+      std::cout << "N must be evenly dividible by BLOCK: N=" << N
+                << " BLOCK=" << BLOCK << std::endl;
       exit(0);
     }
 
@@ -76,10 +78,10 @@ int main(int argc, char *argv[]){
 
     // initialization a and b
     for (int i=0; i<N; i++) {
-        for (int j=0; j<N; j++) {
-	  a(i,j) = 5.0e-1;
-	  b(i,j) = 2.0e-1;
-        }
+      for (int j=0; j<N; j++) {
+        a(i,j) = 5.0e-1;
+        b(i,j) = 2.0e-1;
+      }
     }
 
     auto start = Clock::now();
@@ -91,9 +93,9 @@ int main(int argc, char *argv[]){
 
     std::chrono::duration<double> elapsed_seconds = stop - start;
 
-    std::cout << "Matrix multiplication N=" << N << " " <<
-	      elapsed_seconds.count() / maxiter 
-	      << " s " << "check: " <<  c(N-1, N-1) << std::endl;
+    std::cout << "Matrix multiplication N=" << N
+              << " " << elapsed_seconds.count() / maxiter << " s "
+              << "check: " <<  c(N-1, N-1) << std::endl;
 
     return 0;
 }

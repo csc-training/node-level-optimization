@@ -53,7 +53,7 @@ contains
   subroutine matmul(a, b, c, N)
     implicit none
     integer, intent(in) :: N
-    real(kind=dp), intent(in) :: a(:,:), b(:,:) 
+    real(kind=dp), intent(in) :: a(:,:), b(:,:)
     real(kind=dp), intent(out) :: c(:,:)
 
     real(kind=dp) :: t(N,N)
@@ -75,8 +75,9 @@ contains
           do j = 1, block
             do i = 1, block
               do k = 1, block
-                c(i + bi*block, j + bj*block) = c(i + bi*block ,j + bj*block) + & 
-            &       t(k + bk*block ,i + bi*block)*b(k + bk*block,j + bj*block)
+                c(i + bi*block, j + bj*block) = &
+                  & c(i + bi*block, j + bj*block) + &
+                  & t(k + bk*block, i + bi*block) * b(k + bk*block, j + bj*block)
               end do
             end do
           end do
@@ -87,4 +88,4 @@ contains
   end subroutine matmul
 
 end program matrix_multiply
-  
+

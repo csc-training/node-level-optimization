@@ -47,7 +47,7 @@ contains
   subroutine matmul(a, b, c, N)
     implicit none
     integer, intent(in) :: N
-    real(kind=dp), intent(in) :: a(:,:), b(:,:) 
+    real(kind=dp), intent(in) :: a(:,:), b(:,:)
     real(kind=dp), intent(out) :: c(:,:)
 
     integer :: i, j, k
@@ -57,7 +57,7 @@ contains
     do j = 1, N
        do i = 1, N
           do k = 1, N
-             c(i,j) = c(i,j) + a(i,k)*b(k,j)
+             c(i,j) = c(i,j) + a(i,k) * b(k,j)
           end do
        end do
     end do
@@ -65,4 +65,4 @@ contains
   end subroutine matmul
 
 end program matrix_multiply
-  
+
