@@ -2,7 +2,8 @@
 
 Hands-on exercises can be done in CSC's Puhti and Mahti
 supercomputers. Some exercises you may want to try also on your local
-workstation / laptop.
+workstation / laptop. If you have access to other hardware (e.g. LUMI-C) feel
+free to try exercises also there.
 
 ## Exercise material
 
@@ -59,14 +60,14 @@ https://developer.amd.com/amd-uprof/
 General instructions on using Mahti and Puhti can be found in [CSC user
 documentation](https://docs.csc.fi/computing/overview/).
 
-CSC's Mahti and Puhti supercomputers can be accessed via ssh using the
-provided username (`trainingxxx`) and password:
+CSC's Mahti and Puhti supercomputers can be accessed via ssh using 
+your CSC username and password:
 ```
-ssh -Y training000@puhti.csc.fi
+ssh -Y yourcscusername@puhti.csc.fi
 ```
 or
 ```
-ssh -Y training000@mahti.csc.fi
+ssh -Y yourcscusername@mahti.csc.fi
 ```
 
 For editing program source files you can use e.g. *nano* editor :
@@ -84,9 +85,9 @@ modules with
 module list
 ```
 
-For graphical user interfaces we recommend to use the Puhti Web Interface:
+For graphical user interfaces we recommend to use the Mahti and Puhti Web Interfaces:
 
-- Go to puhti.csc.fi using a web browser and login using your training user account (same username and password you use when connecting with ssh).
+- Go to mahti.csc.fi or puhti.csc.fi using a web browser and login with your csc user account (same username and password you use when connecting with ssh).
 - Start the [Desktop application](https://docs.csc.fi/computing/webinterface/desktop/)
 - Open Terminal by double clicking the **Host terminal** in the desktop
 
@@ -99,7 +100,7 @@ queried with the command `csc-workspaces`. As the base directory is
 shared between members of the project, you should create your own
 directory:
 ```
-cd /scratch/project_2000745/node_level_optimization_2022
+cd /scratch/project_2010371
 mkdir -p $USER
 cd $USER
 ```
@@ -109,43 +110,42 @@ cd $USER
 The login nodes in Mahti and Puhti should be used only for compilation
 and looking at the performance analysis results. All the runs need to
 be done via the batch system. In order to minimize queuing time, a set
-of nodes has been reserved during the course days at 09:00 - 17:00 (EEST).
+of nodes has been reserved during the course days.
 Jobs can be submitted to reservation with
 ```
-sbatch --reservation=training_tue job-script.sh
-sbatch --reservation=training_wed job-script.sh
-sbatch --reservation=training_thu job-script.sh
+sbatch --reservation=optimization-course job-script.sh
 ```
 
 See **Puhti** and **Mahti** sections below for job script templates.
 
 ### Using Puhti
 
-Puhti has GNU and Intel compiler suites available via modules as
+Puhti has GNU and Intel compiler suites available via modules, *e.g.* GNU suite is taken
+into use as:
 ```
 module load gcc
 ```
-or
-```
-module load intel
-```
-The Intel module contains the 19.0 compiler version, however, for this
-course we recommend that you use a **test installation** of the more recent
-Intel OneAPI, which can be activated as:
+The Intel compiler suite version supported by CSC is currently 2022.1, however, for
+this course we recommend to use a test installation of the latest 2024.1.0 version,
+which is made available as follows:
 ```
 module purge
-module load gcc
-source /appl/opt/oneapihpc-2022.2/setvars.sh
+module unuse /appl/spack/v018/modulefiles/linux-rhel8-x86_64/Core
+module use /appl/modulefiles/.oneapi2024.1
+
+module load tbb/2021.12
+module load compiler-rt/2024.1.0
+module load oclfpga/2024.1.0
+module load compiler/2024.1.0
 ```
-(Note that once the latest OneAPI is installed in production
-enviroment this installation will be removed).
+(See [CSC User Documentation](https://docs.csc.fi/computing/compiling-puhti/) for instructions to use the older supported suite).
 
 When running OpenMP programs via the batch job system, one needs to use the `--cpus-per-task` Slurm option and the `OMP_NUM_THREADS` environment variable. 
 Simple job running with 4 OpenMP threads can be submitted with the following batch job script:
 ```
 #!/bin/bash
 #SBATCH --job-name=example
-#SBATCH --account=project_2000745
+#SBATCH --account=project_2010371
 #SBATCH --partition=small
 #SBATCH --time=00:05:00
 #SBATCH --ntasks=1
@@ -156,7 +156,16 @@ export OMP_NUM_THREADS=4  # or export OMP_NUM_THREADS=$SLURM_CPUS_PER_TASK
 srun ./my_exe
 ```
 
-#### Performance analysis with Intel VTune
+#### Performance analysis with Intel VTune and Advisor
+
+Intel VTune and Advisor are available via modules:
+```
+module load vtune
+```
+and
+```
+module load advisor
+```
 
 When using VTune, the collection of the performance results should be
 done via batch system using the command line mode of VTune, e.g.
@@ -187,25 +196,29 @@ module load gcc
 ```
 and
 ```
-module load clang
+module load aocc
 ```
 
 Intel compiler is currently not supported by CSC in Mahti. There is, however, 
- similar **test installation** of Intel OneAPI as in Puhti:
+ similar **test installation** of the latest Intel OneAPI as in Puhti:
 ```
 module purge
-module load gcc
-source /appl/opt/oneapi2022.1.2/setvars.sh
+module unuse /appl/spack/v020/modulefiles/linux-rhel8-x86_64/Core
+module use /appl/modulefiles/.oneapi2024.1/
+
+module load tbb/2021.12
+module load compiler-rt/2024.1.0
+module load oclfpga/2024.1.0
+module load compiler/2024.1.0
 ```
 Note that some Intel compiler options produce binaries that cannot be run on AMD CPUs.
-
 
 When running OpenMP programs via the batch job system, one needs to use the `--cpus-per-task` Slurm option and the `OMP_NUM_THREADS` environment variable. 
 Simple job running with 32 OpenMP threads can be submitted with the following batch job script:
 ```
 #!/bin/bash
 #SBATCH --job-name=example
-#SBATCH --account=project_2000745
+#SBATCH --account=project_2010371
 #SBATCH --partition=medium
 #SBATCH --time=00:05:00
 #SBATCH --ntasks=1
@@ -224,7 +237,7 @@ module load amduprof
 
 When using AMD uprof, the collection of the performance results should be
 done via batch system using the command line mode with the
-`AMDuProfCLi` command. Kernel priviliges required by AMD uprof are available only in the "training" reservations.
+`AMDuProfCLi` command. Kernel priviliges required by AMD uprof are available only in the "optimization-course" reservation.
 
 ```
 #SBATCH ...
@@ -245,6 +258,5 @@ followed by "Import Session".
 
 You can also copy the full directory into your local laptop, and examine the results
 with AMDuProf there.
-
 
 
