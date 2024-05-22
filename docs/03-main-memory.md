@@ -75,10 +75,10 @@ lang:   en
 
 # Memory speed - practice
 
-- Typical memory access latency: ~80 ns 
+- Typical memory access latency: > 100 ns 
 - Concurrency = latency x throughput
     - In order to achieve a bandwidth of 100 GB/s, over 100 memory requests need to be concurrently on the fly (single request = cache line = 64B)
-    - Single core has can sustain typically only ~10 concurrent memory requests, so single
+    - Single core has can sustain typically only 10-20 concurrent memory requests, so single
       thread can achieve only a fraction of peak performance 
 - When many cores access the memory, memory bus may become congested
     - Highest memory bandwidth is typically achieved with some cores idle
