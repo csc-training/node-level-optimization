@@ -7,5 +7,7 @@ predictor has hardtime figuring out which branch is taken.
 Try to sort the data before calling `test_memory`, does the performance improve? 
 (effect can be seen better with moderate compiler settings, *i.e*. `-O1`)
 
+Try to compare branch prediction related performance counters *e.g.* `perf stat -e branch-misses` for the two cases.
+
 There is also a Fortran version, however, as there are no sorting routines in the standard library
 implementing the sorting is more tedious here.
