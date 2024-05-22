@@ -1,11 +1,11 @@
 # Using Intel VTune
 
 The material for this exercise can be found in CSC supercomputers in
-the directory `/scratch/project_2000745/node-level-optimization`. You
+the zip-package `/scratch/project_2010371/Advisor_Vectorization_VTune_Lab.zip`. You
 can extract the material with
 ```
-tar -xzf /scratch/project_2000745/node-level-optimization/vtune-exercises.tar.gz
+unzip /scratch/project_2010371/Advisor_Vectorization_VTune_Lab.zip
 ```
 
-The instructions for the exercise are in the document `VTune_Lab.pdf`,
+The instructions for the exercise are in the document `Vectorization_Lab.pdf`,
 the supercomputers have `evince` pdf-reader program.
