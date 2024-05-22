@@ -29,8 +29,6 @@ Lecture slides from 2022 are [here](https://events.prace-ri.eu/event/1367/).
  - [Stream](stream)
  - [NUMA aware memory usage](first-touch)
 
-
-
 ### Performance tools
 
  - [Using Intel VTune](vtune)
@@ -50,6 +48,7 @@ Lecture slides from 2022 are [here](https://events.prace-ri.eu/event/1367/).
  - [Fast mathematics](math)
  - [Branch prediction](branch-prediction)
 
+## Additional exercises
 
 ### Threading optimization
 
