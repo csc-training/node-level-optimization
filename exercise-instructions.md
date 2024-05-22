@@ -185,8 +185,21 @@ vtune-gui &
 For example, the above collection command would create a directory
 `r000ps` (each subsequent collection creates a new directory, you can
 check Slurm output `slurm-xxxxx.out` for the name) which can be opened in the GUI.
+A particular result set can also be opened by giving the name of the results directory as an argument to `vtune-gui`:
+
+```
+vtune-gui results_dir_name
+```
+
 You can also copy the full `r000ps` directory into your local laptop, 
 and examine the results with VTune GUI there.
+
+Sometimes `vtune-gui` fails to start with an error "Failed to launch VTune Amplifier GUI...". If that happens, one should kill VTune processes that are left behind and try again:
+
+```
+killall -9 -r vtune
+vtune-gui
+```
 
 ### Using Mahti
 
