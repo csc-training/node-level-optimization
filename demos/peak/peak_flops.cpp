@@ -101,9 +101,9 @@ int main() {
 
     for (i=0, j=0; i < VECTOR_WIDTH; i++) {
        for (int n=0; n < NUM_OPS; n++, j++)
-          fa[j] = 0.0; 
-       fb[i] = 0.5; 
-       fc[i] = 1.0; 
+          fa[j] = 1.2345;
+       fb[i] = 0.5678; 
+       fc[i] = 3.0102; 
     }
 
 #pragma nounroll // Try to prevent automatic unrolling
