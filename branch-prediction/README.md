@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2021 CSC - IT Center for Science Ltd. <www.csc.fi>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Branch misprediction
 
 The file `branch-misprediction.cpp` generates random numbers between 1 and 10, and 

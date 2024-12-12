@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2021 CSC - IT Center for Science Ltd. <www.csc.fi>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Node Level Performance Optimization
 
 Course material for the CSC course "Node Level Performance Optimization". The course is part of PRACE Training Center (PTC) activity at CSC. The most recent version

@@ -1,4 +1,10 @@
 /*
+ * SPDX-FileCopyrightText: 2021 CSC - IT Center for Science Ltd. <www.csc.fi>
+ *
+ * SPDX-License-Identifier: MIT
+ */
+
+/*
  * This example is based on the code of Andrew V. Adinetz
  * https://github.com/canonizer/mandelbrot-dyn
  * Licensed under The MIT License

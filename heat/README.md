@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2021 CSC - IT Center for Science Ltd. <www.csc.fi>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Thread pinning for heat equation solver
 
 The two dimensional heat equation solver here is memory bound. In Mahti,

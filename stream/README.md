@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2021 CSC - IT Center for Science Ltd. <www.csc.fi>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Main memory bandwidth
 
 [Stream](https://www.cs.virginia.edu/stream/ref.html) is common benchmark for 

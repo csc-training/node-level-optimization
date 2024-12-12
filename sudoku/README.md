@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2021 CSC - IT Center for Science Ltd. <www.csc.fi>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Parallel Sudoku solving with OpenMP tasks
 
 The C++ code here solves a Sudoku with brute-force method, *i.e.*

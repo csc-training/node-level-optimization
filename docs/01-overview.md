@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2021 CSC - IT Center for Science Ltd. <www.csc.fi>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 ---
 title:  Overview of performance engineering
 event:  Node-level Performance Optimization @ CSC
@@ -72,7 +78,10 @@ Time elapsed 343773 ums
     - linear algebra (BLAS/LAPACK), FFTs, ...
 </div>
 <div class=column style="width:46%">
-<!-- Copyright CSC -->
+
+<!--
+Copyright CSC
+-->
 ![](img/optimal_performance.png){.center width=60%}
 </div>
 

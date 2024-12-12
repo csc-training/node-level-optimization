@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2018 Jakub Beránek
+//
+// SPDX-License-Identifier: MIT
+
 #include <iostream>
 #include <vector>
 #include <chrono>

@@ -1,4 +1,8 @@
 ! Copyright 2021 CSC - IT Center for science
+! SPDX-FileCopyrightText: 2021 CSC - IT Center for Science Ltd. <www.csc.fi>
+!
+! SPDX-License-Identifier: MIT
+
 program fibonacci
   use omp_lib
   use iso_fortran_env, only : REAL64

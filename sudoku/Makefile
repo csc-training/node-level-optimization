@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2013 Christian Terboven <christian@terboven.com>
+#
+# SPDX-License-Identifier: GPL-2.0-or-later
+
 BIN_DIR=./
 PROGRAM=$(BIN_DIR)/sudoku-tsk
 

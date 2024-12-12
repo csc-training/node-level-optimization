@@ -1,3 +1,7 @@
+! SPDX-FileCopyrightText: 2021 CSC - IT Center for Science Ltd. <www.csc.fi>
+!
+! SPDX-License-Identifier: MIT
+
 program laplacian
   use iso_fortran_env, only : REAL64
   use omp_lib

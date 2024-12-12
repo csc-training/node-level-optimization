@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2021 CSC - IT Center for Science Ltd. <www.csc.fi>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Optimizing matrix multiplication
 
 The file `matmul.cpp` / `matmul.F90` contains a naive implementation of

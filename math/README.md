@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2021 CSC - IT Center for Science Ltd. <www.csc.fi>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Replacing division with multiplication
 
 The file `laplacian.cpp` / `laplacian.F90` calculates Laplacian of two dimensional field.

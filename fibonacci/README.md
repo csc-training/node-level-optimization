@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2021 CSC - IT Center for Science Ltd. <www.csc.fi>
+
+SPDX-License-Identifier: CC-BY-4.0
+-->
+
 # Calculating Fibonacci numbers in parallel
 
 Fibonacci numbers are a sequence of integers defined by the recurrence 
