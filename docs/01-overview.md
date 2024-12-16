@@ -79,9 +79,6 @@ Time elapsed 343773 ums
 </div>
 <div class=column style="width:46%">
 
-<!--
-Copyright CSC
--->
 ![](img/optimal_performance.png){.center width=60%}
 </div>
 
@@ -229,7 +226,6 @@ end do
 ```
 </div>
 
-<!-- Copyright CSC -->
 ![](img/vtune-shot.png)
 </div>
 
@@ -287,7 +283,6 @@ end do
 
 # Code optimization cycle
 
-<!-- Copyright CSC -->
 ![](img/perf-analysis-single-node.png){.center width=60%}
 
 
@@ -306,7 +301,6 @@ end do
 </div>
 
 <div class=column>
-<!-- Copyright CSC -->
 ![](img/cpu-memory.png){.center width=50%}
 </div>
 
@@ -374,7 +368,6 @@ $$
 </div>
 
 <div class=column style="width:46%">
-<!-- copyright csc -->
 ![](img/simple-roofline.png){.center width=100%}
 <br>
 
@@ -394,10 +387,8 @@ $$
 - However, a roofline can be useful for guiding the optimization work
 </div>
 <div class=column>
-<!-- Copyright CSC -->
 ![](img/ceilings-roofline.png){.center width=85%}
 <br>
-<!-- https://crd.lbl.gov/departments/computer-science/par/research/roofline/introduction/ -->
 ![](img/arithmetic-intensity.png){.center width=75%}
 </div>
 

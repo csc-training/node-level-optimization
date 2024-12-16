@@ -31,8 +31,7 @@ lang:   en
 </div>
 <div class=column style=width:43%>
 
-<!--Image copyright By Kapooht - Own work, CC BY-SA 3.0, -->
-![](https://upload.wikimedia.org/wikipedia/commons/e/e5/Von_Neumann_Architecture.svg){.center width=90%}
+![](img/Von_Neumann_Architecture.svg){.center width=90%}
 
 </div>
 
@@ -47,8 +46,7 @@ lang:   en
 </div>
 <div class=column style=width:43%>
 
-<!-- Image copyright Public Domain -->
-![](https://en.wikichip.org/w/images/f/f2/zen_2_core_diagram.svg){.center width=45%}
+![](img/zen_2_core_diagram.svg){.center width=45%}
 
 </div>
 
@@ -123,7 +121,6 @@ less than one
 
 <div class=column style=width:32%>
 
-<!-- Image copyright CSC, see LICENSE -->
 ![](img/ilp.svg){.center width=80%}
 
 </div>
@@ -148,7 +145,6 @@ $$
 - AVX512 512 bits = 8 double precision numbers
     - single AVX512 fused multiply add instruction can perform 16 FLOPS
 
-<!-- Image copyright CSC, see LICENSE -->
 ![](img/simd.svg){.center width=70%}
   
 # Cache memory
@@ -162,7 +158,6 @@ $$
 </div>
 
 <div class=column style=width:43%>
-<!-- Image copyright CSC, see LICENSE -->
 ![](img/memory_hierarchy.svg){.center width=90%}
 </div>
 
@@ -179,7 +174,6 @@ $$
 </div>
   
 <div class=column style=width:43%>
-<!-- Image copyright CSC, see LICENSE -->
 ![](img/smt.svg){.center width=70%}
 </div>
 
@@ -194,7 +188,6 @@ $$
 </div>
 
 <div class=column>
-<!-- Image copyright CSC, see LICENSE -->
 ![](img/multicore-schematic.svg){.center width=60%}
 </div>
 
@@ -207,7 +200,6 @@ $$
 </div>
 
 <div class=column>
-<!-- Image copyright CSC, see LICENSE -->
 ![](img/cache-coherency.svg){.center width=50%}
 </div>
    
@@ -221,7 +213,6 @@ $$
 </div>
 
 <div class=column>
-<!-- Image copyright CSC, see LICENSE -->
 ![](img/numa-schematic.png){.center width=70%}
 </div>
 

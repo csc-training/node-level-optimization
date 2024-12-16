@@ -30,7 +30,6 @@ lang:   en
 - Main memory is typically the slowest component in modern CPU (neglecting I/O) 
 </div>
 <div class=column style=width:43%>
-<!-- Image copyright CSC, see LICENSE -->
 ![](img/numa-schematic.png){.center width=80%}
 </div>
 
@@ -56,9 +55,9 @@ lang:   en
 
 <div class=column style=width:60%>
 - Coordinates the transfer of bits between memory DIMMs and the CPU core (via caches)
-- Might be on the same die as CPU (integrated memory controller) or in a separate die
+- Might be on the same die as CPU (Intel) or in a separate die (AMD)
 - Main characteristics
-    - Number of channels (*e.g.* 6)
+    - Number of channels (*e.g.* 8)
     - Speed / clock frequency (*e.g.* 3200 MT/s)
     - Bus width (64 bit) 
 </div>
@@ -98,7 +97,6 @@ lang:   en
 </div>
 
 <div class=column>
-<!-- Image copyright CSC, see LICENSE -->
 ![](img/numa-schematic.png){.center width=70%}
 </div>
 
